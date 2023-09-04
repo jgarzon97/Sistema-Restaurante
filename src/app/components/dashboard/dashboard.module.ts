@@ -9,6 +9,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { PedidosComponent } from './pedidos/pedidos.component';
 import { MenuComponent } from './menu/menu.component';
 import { PagoComponent } from './pago/pago.component';
+import { NuevoMenuComponent } from './menu/nuevo-menu/nuevo-menu.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { PagoComponent } from './pago/pago.component';
     NavbarComponent,
     PedidosComponent,
     MenuComponent,
-    PagoComponent
+    PagoComponent,
+    NuevoMenuComponent
   ],
   imports: [
     CommonModule,
