@@ -17,6 +17,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatSelectModule } from '@angular/material/select';
 
 
 @NgModule({
@@ -35,7 +38,10 @@ import { MatSortModule } from '@angular/material/sort';
     HttpClientModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatCardModule,
+    MatGridListModule,
+    MatSelectModule
   ],
   exports:[
     CommonModule,
@@ -51,7 +57,10 @@ import { MatSortModule } from '@angular/material/sort';
     HttpClientModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatCardModule,
+    MatGridListModule,
+    MatSelectModule
   ]
 })
 export class SharedModule { }

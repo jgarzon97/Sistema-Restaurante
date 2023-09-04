@@ -1,5 +1,49 @@
 <div class="container">
     <mat-toolbar>
-        <span>Nuevo Menu</span>
+        <span>Ingresar nuevos Productos</span>
     </mat-toolbar>
+
+    <mat-card style="margin-top: 10px;">
+        <form>
+            <mat-grid-list cols="4" rowHeight="70px">
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field class="ancho">
+                        <mat-label>Nombre</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="3" [rowspan]="5">
+                    <img src="./assets/img/facturacion.png" width="400" height="400">
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field class="ancho">
+                        <mat-label>Descripción</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                        <mat-form-field class="ancho">
+                            <mat-label>Categoria</mat-label>
+                            <mat-select>
+                              <mat-option *ngFor="let food of foods" [value]="food.value">
+                                {{food.viewValue}}
+                            </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field class="ancho">
+                        <mat-label>Precio</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <button mat-raised-button color="primary">Aceptar</button>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <button mat-raised-button>Volver</button>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </form>
+    </mat-card>
 </div>

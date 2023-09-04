@@ -9,7 +9,7 @@ import { NuevoMenuComponent } from './menu/nuevo-menu/nuevo-menu.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent, children: [
-    { path: '', component: InicioComponent },
+    { path: 'inicio', component: InicioComponent },
     { path: 'pedidos', component: PedidosComponent },
     { path: 'menu', component: MenuComponent },
     { path: 'pago', component: PagoComponent },
