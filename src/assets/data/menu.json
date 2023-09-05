@@ -1,7 +1,7 @@
 [
     {
-        "nombre": "Dashboard",
-        "redirect": "/dashboard"
+        "nombre": "Inicio",
+        "redirect": "/dashboard/inicio"
     },
     {
         "nombre": "Pedidos",

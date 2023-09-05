@@ -2,25 +2,24 @@ import { Component } from '@angular/core';
 
 
 export interface PeriodicElement {
-  name: string;
+  mesa: string;
   position: number;
-  weight: number;
-  symbol: string;
+  capacidad: number;
+  estado: string;
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+  {position: 1, mesa: 'Mesa 1', capacidad: 4, estado: 'Libre'},
+  {position: 2, mesa: 'Mesa 2', capacidad: 4, estado: 'Libre'},
+  {position: 3, mesa: 'Mesa 3', capacidad: 6, estado: 'Libre'},
+  {position: 4, mesa: 'Mesa 4', capacidad: 6, estado: 'Libre'},
+  {position: 5, mesa: 'Mesa 5', capacidad: 10, estado: 'Libre'},
+  {position: 6, mesa: 'Mesa 6', capacidad: 10, estado: 'Libre'},
+  {position: 7, mesa: 'Mesa 7', capacidad: 4, estado: 'Libre'},
+  {position: 8, mesa: 'Mesa 8', capacidad: 4, estado: 'Libre'},
+  {position: 9, mesa: 'Mesa 9', capacidad: 2, estado: 'Libre'},
+  {position: 10, mesa: 'Mesa 10', capacidad: 2, estado: 'Libre'},
 ];
-
 
 @Component({
   selector: 'app-inicio',
@@ -28,8 +27,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./inicio.component.css']
 })
 
-
 export class InicioComponent {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['position', 'mesa', 'capacidad', 'estado'];
   dataSource = ELEMENT_DATA;
 }
