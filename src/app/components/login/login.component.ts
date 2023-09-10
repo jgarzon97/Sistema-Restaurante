@@ -24,7 +24,6 @@ this.form = this.fb.group({
   }
 
   Ingresar() {
-
     const usuario = this.form.value.usuario;
     const password = this.form.value.password;
 

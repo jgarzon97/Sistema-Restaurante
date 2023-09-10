@@ -2,15 +2,9 @@
     <mat-toolbar>
         <span>Pedidos</span>
         <div class="example-spacer"></div>
-        <div class="demo-button-container">
-            <button mat-raised-button color="primary" (click)="addData()" class="demo-button">
-                AGREGAR
-            </button>
-            <button mat-raised-button [disabled]="!dataSource.length" (click)="removeData()" class="demo-button" style="margin-left: 20px;">
-                COBRAR
-            </button>
-        </div>
+        <button mat-raised-button color="primary" routerLink="/dashboard/nuevo-pedido">AGREGAR</button>
     </mat-toolbar>
+
     <div class="mat-elevation-z1" style="margin-top: 10px;">
         <table mat-table [dataSource]="dataSource" matSort>
             <!-- Position Column -->

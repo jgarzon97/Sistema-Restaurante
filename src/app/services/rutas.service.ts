@@ -1,16 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Menu } from '../interfaces/menu';
+import { Rutas } from '../interfaces/rutas';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class MenuService {
+export class RutasService {
 
   constructor(private http: HttpClient) { }
 
-  getMenu(): Observable<Menu[]> {
-    return this.http.get<Menu[]>("./assets/data/menu.json")
+  geRoutes(): Observable<Rutas[]> {
+    return this.http.get<Rutas[]>("./assets/data/routes.navbar.json")
   }
+
 }

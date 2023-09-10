@@ -10,6 +10,7 @@ import { PedidosComponent } from './pedidos/pedidos.component';
 import { MenuComponent } from './menu/menu.component';
 import { PagoComponent } from './pago/pago.component';
 import { NuevoMenuComponent } from './menu/nuevo-menu/nuevo-menu.component';
+import { NuevoPedidoComponent } from './pedidos/nuevo-pedido/nuevo-pedido.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { NuevoMenuComponent } from './menu/nuevo-menu/nuevo-menu.component';
     PedidosComponent,
     MenuComponent,
     PagoComponent,
-    NuevoMenuComponent
+    NuevoMenuComponent,
+    NuevoPedidoComponent
   ],
   imports: [
     CommonModule,

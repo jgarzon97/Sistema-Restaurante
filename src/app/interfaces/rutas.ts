@@ -1,5 +1,5 @@
 // navbar
-export interface Menu {
+export interface Rutas {
     nombre : string;
     redirect : string;
 }

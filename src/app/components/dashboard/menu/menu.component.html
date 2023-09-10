@@ -10,7 +10,7 @@
         <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ham" #input>
     </mat-form-field>
 
-    <div class="mat-elevation-z1">
+    <div class="mat-elevation-z1" style="margin-top: 10px;">
         <table mat-table [dataSource]="dataSource" matSort>
             <!-- nombre Column -->
             <ng-container matColumnDef="nombre">

@@ -21,10 +21,4 @@ export class PedidosComponent {
       this.dataSource = data;
     });
   }
-
-  addData() {
-  }
-
-  removeData() {
-  }
 }
