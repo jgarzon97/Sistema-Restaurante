@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { PruebaService } from 'src/app/services/prueba.service';
+import { ServidorService } from 'src/app/services/servidor.service';
 
 @Component({
   selector: 'app-inicio',
@@ -11,13 +11,13 @@ import { PruebaService } from 'src/app/services/prueba.service';
 
 export class InicioComponent {
 
-  displayedColumns: string[] = ['numero_de_mesa', 'capacidad', 'estado'];
+  displayedColumns: string[] = ['num_mesa', 'capacidad', 'estado'];
   dataSource: any[] = [];
 
-  constructor(private snackBar: MatSnackBar, private pruebaService: PruebaService) {}
+  constructor(private snackBar: MatSnackBar, private servidor: ServidorService) {}
 
   ngOnInit(): void {
-    this.pruebaService.getMesas().subscribe(data => {
+    this.servidor.getMesas().subscribe(data => {
       console.log(data); // Verifica si estás recibiendo datos y su estructura
       this.dataSource = data;
     });

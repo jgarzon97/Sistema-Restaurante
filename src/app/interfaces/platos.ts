@@ -1,6 +1,8 @@
 export interface Platos {
     nombre: string;
-    descripcion: string;
+    stock: number;
     precio: number;
-    preparacion: string;
+    tiempo: number;
+    estado: string;
+    categoria: number;
 }

@@ -1,7 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTable } from '@angular/material/table';
-import { PruebaService } from 'src/app/services/prueba.service';
+import { ServidorService } from 'src/app/services/servidor.service';
 
 @Component({
   selector: 'app-pedidos',
@@ -9,15 +8,15 @@ import { PruebaService } from 'src/app/services/prueba.service';
   styleUrls: ['./pedidos.component.css']
 })
 export class PedidosComponent {
-  displayedColumns: string[] = ['id', 'cliente', 'fecha', 'estado', 'total'];
+  displayedColumns: string[] = ['num_pedido', 'fecha', 'hora', 'id_usuario', 'id_mesa', 'id_cliente'];
   dataSource: any[] = [];
 
   @ViewChild(MatTable) table!: MatTable<any>;
 
-  constructor(private snackBar: MatSnackBar, private pruebaService: PruebaService) {}
+  constructor(private servidor: ServidorService) {}
 
   ngOnInit(): void {
-    this.pruebaService.getDatos().subscribe(data => {
+    this.servidor.getDatos().subscribe(data => {
       console.log(data); // Verifica si estás recibiendo datos y su estructura
       this.dataSource = data;
     });
