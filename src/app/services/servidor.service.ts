@@ -10,6 +10,7 @@ export class ServidorService {
   private producto = 'http://localhost:8080/producto';
   private pedido = 'http://localhost:8080/pedido';
   private mesa = 'http://localhost:8080/mesa';
+  private categoria = 'http://localhost:8080/categoria';
 
   constructor(private http: HttpClient) { }
 
@@ -23,5 +24,9 @@ export class ServidorService {
 
   getProducto(): Observable<any[]> {
     return this.http.get<any[]>(this.producto);
+  }
+
+  getCategoria(): Observable<any[]> {
+    return this.http.get<any[]>(this.categoria);
   }
 }

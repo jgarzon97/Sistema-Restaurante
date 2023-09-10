@@ -22,14 +22,14 @@
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
-                        <mat-form-field class="ancho">
-                            <mat-label>Categoria</mat-label>
-                            <mat-select>
-                              <mat-option *ngFor="let food of foods" [value]="food.value">
-                                {{food.viewValue}}
+                    <mat-form-field class="ancho">
+                        <mat-label>Categoria</mat-label>
+                        <mat-select>
+                            <mat-option *ngFor="let category of categories" [value]="category.id_categoria">
+                                {{ category.nombre }}
                             </mat-option>
-                            </mat-select>
-                        </mat-form-field>
+                        </mat-select>
+                    </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
                     <mat-form-field class="ancho">
@@ -41,7 +41,7 @@
                     <button mat-raised-button color="primary">Aceptar</button>
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
-                    <button mat-raised-button>Volver</button>
+                    <button mat-raised-button routerLink="/dashboard/menu">Volver</button>
                 </mat-grid-tile>
             </mat-grid-list>
         </form>
