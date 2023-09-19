@@ -31,6 +31,10 @@ export class ServidorService {
     return this.http.post<any>(`${this.apiUrl}/usuario`, usuarioData);
   }
 
+  getCategorias(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/categorias`);
+  }
+
   getProductos(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/productos`);
   }
@@ -45,5 +49,10 @@ export class ServidorService {
 
   getClientes(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/clientes`);
+  }
+
+  autenticarUsuario(user_usuario: string, pass_usuario: string): Observable<any> {
+    const body = { user_usuario, pass_usuario };
+    return this.http.post(`${this.apiUrl}/autenticar`, body);
   }
 }

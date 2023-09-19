@@ -40,4 +40,16 @@ export class NuevoPedidoComponent {
       }
     );
   }
+
+  actualizarMesasDisponibles() {
+    this.servidorService.getMesas().subscribe(
+      (data: any[]) => {
+        console.log(data);
+        this.mesas = data;
+      },
+      (error) => {
+        console.error('Error al obtener mesas:', error);
+      }
+    );
+  }
 }
