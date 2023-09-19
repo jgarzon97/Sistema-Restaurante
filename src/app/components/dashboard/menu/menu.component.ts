@@ -30,7 +30,7 @@ export class MenuComponent {
   }
 
   ngOnInit(): void {
-    this.servidor.getProducto().subscribe(
+    this.servidor.getProductos().subscribe(
       (data: Platos[]) => {
         console.log(data);
         this.dataSource.data = data; // Establecer los datos en el MatTableDataSource

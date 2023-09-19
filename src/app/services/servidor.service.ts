@@ -7,26 +7,43 @@ import { Observable } from 'rxjs';
 })
 export class ServidorService {
 
-  private producto = 'http://localhost:8080/producto';
-  private pedido = 'http://localhost:8080/pedido';
-  private mesa = 'http://localhost:8080/mesa';
-  private categoria = 'http://localhost:8080/categoria';
+  private apiUrl = 'http://localhost:3000'; // La URL base de tu servidor Express
 
   constructor(private http: HttpClient) { }
 
-  getDatos(): Observable<any[]> {
-    return this.http.get<any[]>(this.pedido);
+  getPedidos(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/pedidos`);
+  }
+
+  crearPedido(pedidoData: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/pedido`, pedidoData);
   }
 
   getMesas(): Observable<any[]> {
-    return this.http.get<any[]>(this.mesa);
+    return this.http.get<any[]>(`${this.apiUrl}/mesas`);
   }
 
-  getProducto(): Observable<any[]> {
-    return this.http.get<any[]>(this.producto);
+  getUsuarios(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/usuarios`);
   }
 
-  getCategoria(): Observable<any[]> {
-    return this.http.get<any[]>(this.categoria);
+  crearUsuario(usuarioData: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/usuario`, usuarioData);
+  }
+
+  getProductos(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/productos`);
+  }
+
+  crearProducto(productoData: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/producto`, productoData);
+  }
+
+  crearFactura(facturaData: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/factura`, facturaData);
+  }
+
+  getClientes(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/clientes`);
   }
 }

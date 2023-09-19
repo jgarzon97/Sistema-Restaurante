@@ -16,8 +16,8 @@ export class PedidosComponent {
   constructor(private servidor: ServidorService) {}
 
   ngOnInit(): void {
-    this.servidor.getDatos().subscribe(data => {
-      console.log(data); // Verifica si estás recibiendo datos y su estructura
+    this.servidor.getPedidos().subscribe(data => {
+      console.log(data);
       this.dataSource = data;
     });
   }

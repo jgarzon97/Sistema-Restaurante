@@ -1,1 +1,62 @@
-<h1>nuevo-pedido works!</h1>
+<div class="container">
+    <mat-toolbar>
+        <span>Ingresar nuevo Pedido</span>
+    </mat-toolbar>
+
+    <mat-card style="margin-top: 10px;">
+        <form style="margin-top: 10px;">
+            <mat-grid-list cols="4" rowHeight="70px">
+
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field class="ancho">
+                        <mat-label>No. Pedido</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="3" [rowspan]="5">
+                    <img src="./assets/img/facturacion.png" width="400" height="400">
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field class="ancho">
+                        <mat-label>Usuario</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <!-- Selecciona una mesa de la lista de Mesas disponibles. -->
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field>
+                        <mat-label>Selecciona una mesa</mat-label>
+                        <mat-select [(ngModel)]="selectedMesa" name="mesa">
+                            <mat-option *ngFor="let mesa of mesas" [value]="mesa.id_mesa">
+                                {{ mesa.num_mesa }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <!-- Selecciona un Cliente. -->
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field>
+                        <mat-label>Cliente</mat-label>
+                        <mat-select [(ngModel)]="selectedCliente" name="cliente">
+                            <mat-option *ngFor="let cliente of clientes" [value]="cliente.id_cliente">
+                                {{ cliente.nombre }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <button mat-raised-button color="primary">Aceptar</button>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <button mat-raised-button routerLink="/dashboard/menu">Volver</button>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </form>
+    </mat-card>
+</div>

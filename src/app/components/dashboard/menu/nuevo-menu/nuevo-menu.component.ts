@@ -15,14 +15,7 @@ export class NuevoMenuComponent {
   constructor(private servidorService: ServidorService, private router: Router) {}
 
   ngOnInit(): void {
-    this.servidorService.getCategoria().subscribe(
-      (data) => {
-        console.log('Mostrar los datos', data);
-      },
-      (error) => {
-        console.error('Error al cargar los datos', error);
-      }
-    );
+
   }
 
 }
