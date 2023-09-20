@@ -10,7 +10,7 @@
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
                     <mat-form-field class="ancho">
                         <mat-label>No. Pedido</mat-label>
-                        <input matInput>
+                        <input matInput [(ngModel)]="numeroPedido" name="numeroPedido">
                     </mat-form-field>
                 </mat-grid-tile>
 
@@ -21,7 +21,7 @@
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
                     <mat-form-field class="ancho">
                         <mat-label>Usuario</mat-label>
-                        <input matInput>
+                        <input matInput [(ngModel)]="usuario" name="usuario">
                     </mat-form-field>
                 </mat-grid-tile>
 
@@ -50,7 +50,7 @@
                 </mat-grid-tile>
 
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
-                    <button mat-raised-button color="primary">Aceptar</button>
+                    <button mat-raised-button color="primary" (click)="enviarPedido()">Aceptar</button>
                 </mat-grid-tile>
 
                 <mat-grid-tile [colspan]="2" [rowspan]="1">

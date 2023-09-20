@@ -5,36 +5,48 @@
         <button mat-raised-button color="primary" routerLink="/dashboard/nuevo-pedido">AGREGAR</button>
     </mat-toolbar>
 
-    <div class="mat-elevation-z1" style="margin-top: 10px;">
+    <div class="mat-elevation-z3" style="margin-top: 10px;">
         <table mat-table [dataSource]="dataSource" matSort>
-            <!-- Position Column -->
+
             <ng-container matColumnDef="num_pedido">
                 <th mat-header-cell *matHeaderCellDef> Pedido </th>
                 <td mat-cell *matCellDef="let element"> {{ element.num_pedido }} </td>
             </ng-container>
-            <!-- Name Column -->
+
             <ng-container matColumnDef="fecha">
                 <th mat-header-cell *matHeaderCellDef> Fecha </th>
                 <td mat-cell *matCellDef="let element"> {{ element.fecha }} </td>
             </ng-container>
-            <!-- Weight Column -->
+
             <ng-container matColumnDef="hora">
                 <th mat-header-cell *matHeaderCellDef> Hora </th>
                 <td mat-cell *matCellDef="let element"> {{ element.hora }} </td>
             </ng-container>
-            <!-- Symbol Column -->
+
             <ng-container matColumnDef="id_usuario">
                 <th mat-header-cell *matHeaderCellDef> Usuario </th>
                 <td mat-cell *matCellDef="let element"> {{ element.id_usuario }} </td>
             </ng-container>
+
             <ng-container matColumnDef="id_mesa">
                 <th mat-header-cell *matHeaderCellDef> Mesa </th>
                 <td mat-cell *matCellDef="let element"> {{ element.id_mesa }} </td>
             </ng-container>
+
             <ng-container matColumnDef="id_cliente">
                 <th mat-header-cell *matHeaderCellDef> Cliente </th>
                 <td mat-cell *matCellDef="let element"> {{ element.id_cliente }} </td>
             </ng-container>
+
+            <ng-container matColumnDef="estado">
+                <th mat-header-cell *matHeaderCellDef> Estado </th>
+                <td mat-cell *matCellDef="let element">
+                    <button [ngClass]="element.estado === 'Cancelado' ? 'green-button' : 'red-button'">
+                        {{ element.estado }}
+                    </button>
+                </td>
+            </ng-container>
+
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>

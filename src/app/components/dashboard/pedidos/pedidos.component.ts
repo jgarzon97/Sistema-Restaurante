@@ -8,7 +8,7 @@ import { ServidorService } from 'src/app/services/servidor.service';
   styleUrls: ['./pedidos.component.css']
 })
 export class PedidosComponent {
-  displayedColumns: string[] = ['num_pedido', 'fecha', 'hora', 'id_usuario', 'id_mesa', 'id_cliente'];
+  displayedColumns: string[] = ['num_pedido', 'fecha', 'hora', 'id_usuario', 'id_mesa', 'id_cliente', 'estado'];
   dataSource: any[] = [];
 
   @ViewChild(MatTable) table!: MatTable<any>;

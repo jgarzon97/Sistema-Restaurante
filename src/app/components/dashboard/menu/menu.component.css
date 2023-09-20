@@ -3,7 +3,36 @@ table {
 }
 
 th {
-    width: 20%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.mat-header-cell {
+    text-align: center;
+}
+
+.mat-column-nombre {
+    text-align: center;
+}
+
+.mat-column-stock {
+    text-align: center;
+}
+
+.mat-column-precio {
+    text-align: center;
+}
+
+.mat-column-tiempo {
+    text-align: center;
+}
+
+.mat-column-estado {
+    text-align: center;
+}
+
+.mat-column-id_categoria {
+    text-align: center;
 }
 
 .mat-mdc-form-field {

@@ -15,7 +15,10 @@ export class NuevoPedidoComponent {
   clientes: any[] = [];
   selectedCliente: any;
 
-  constructor(private servidorService: ServidorService, private router: Router) {}
+  numeroPedido: string | undefined;
+  usuario: string | undefined;
+
+  constructor(private servidorService: ServidorService, private router: Router) { }
 
   ngOnInit(): void {
     // Cargar la lista de mesas
@@ -51,5 +54,30 @@ export class NuevoPedidoComponent {
         console.error('Error al obtener mesas:', error);
       }
     );
+  }
+
+  enviarPedido() {
+    if (this.numeroPedido && this.usuario && this.selectedMesa && this.selectedCliente) {
+      const pedidoData = {
+        numeroPedido: this.numeroPedido,
+        usuario: this.usuario,
+        mesa: this.selectedMesa,
+        cliente: this.selectedCliente,
+      };
+
+      this.servidorService.crearPedido(pedidoData).subscribe(
+        (response) => {
+          // Maneja la respuesta del servidor aquí.
+          console.log('Respuesta del servidor:', response);
+        },
+        (error) => {
+          // Maneja los errores aquí, muestra detalles del error.
+          console.error('Error al enviar el pedido:', error);
+        }
+      );
+    } else {
+      // Muestra un mensaje de error o una notificación al usuario para que complete todos los campos.
+      console.error('Completa todos los campos antes de enviar el pedido.');
+    }
   }
 }

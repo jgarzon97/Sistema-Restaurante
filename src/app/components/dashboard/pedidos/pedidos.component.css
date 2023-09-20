@@ -3,5 +3,53 @@ table {
 }
 
 th {
-    width: 20%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.mat-column-num_pedido {
+    border-right: 1px solid currentColor;
+    text-align: center;
+}
+
+.mat-column-fecha {
+    text-align: center;
+}
+
+.mat-column-hora {
+    text-align: center;
+}
+
+.mat-column-id_usuario {
+    text-align: center;
+}
+
+.mat-column-id_mesa {
+    text-align: center;
+}
+
+.mat-column-id_cliente {
+    text-align: center;
+}
+
+.mat-column-estado {
+    text-align: center;
+}
+
+.green-button {
+    background-color: rgb(35, 202, 35);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.red-button {
+    background-color: rgb(217, 45, 45);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
 }
