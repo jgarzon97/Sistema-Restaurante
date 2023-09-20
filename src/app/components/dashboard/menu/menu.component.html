@@ -1,12 +1,12 @@
 <div class="container">
     <mat-toolbar>
-        <span>Menú</span>
+        <span>LISTADO DE PRODUCTOS - MENU</span>
         <div class="example-spacer"></div>
         <button mat-raised-button color="primary" routerLink="/dashboard/nuevo-menu">AGREGAR</button>
     </mat-toolbar>
 
     <mat-form-field>
-        <mat-label>Buscar</mat-label>
+        <mat-label>Buscar producto</mat-label>
         <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ham" #input>
     </mat-form-field>
 
