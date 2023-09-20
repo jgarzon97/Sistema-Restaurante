@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { ServidorService } from 'src/app/services/servidor.service';
 
@@ -15,10 +17,14 @@ export class NuevoPedidoComponent {
   clientes: any[] = [];
   selectedCliente: any;
 
-  numeroPedido: string | undefined;
-  usuario: string | undefined;
+  formData = {
+    num_pedido: '',
+    id_usuario: '',
+    id_mesa: '',
+    id_cliente: ''
+  };
 
-  constructor(private servidorService: ServidorService, private router: Router) { }
+  constructor(private servidorService: ServidorService, private router: Router, private http: HttpClient, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     // Cargar la lista de mesas
@@ -44,31 +50,24 @@ export class NuevoPedidoComponent {
     );
   }
 
-  actualizarMesasDisponibles() {
-    this.servidorService.getMesas().subscribe(
-      (data: any[]) => {
-        console.log(data);
-        this.mesas = data;
-      },
-      (error) => {
-        console.error('Error al obtener mesas:', error);
-      }
-    );
-  }
-
-  enviarPedido() {
-    if (this.numeroPedido && this.usuario && this.selectedMesa && this.selectedCliente) {
+  submitForm() {
+    if (this.formData.id_mesa && this.formData.id_cliente) {
+      // Define los datos del pedido a enviar al servidor.
       const pedidoData = {
-        numeroPedido: this.numeroPedido,
-        usuario: this.usuario,
-        mesa: this.selectedMesa,
-        cliente: this.selectedCliente,
+        num_pedido: this.formData.num_pedido,
+        id_usuario: this.formData.id_usuario,
+        id_mesa: this.formData.id_mesa,
+        id_cliente: this.formData.id_cliente
       };
 
+      // Realiza la solicitud POST al servidor.
       this.servidorService.crearPedido(pedidoData).subscribe(
         (response) => {
           // Maneja la respuesta del servidor aquí.
           console.log('Respuesta del servidor:', response);
+
+          // Redirige a la página deseada después de un pedido exitoso.
+          this.router.navigate(['/dashboard/menu']);
         },
         (error) => {
           // Maneja los errores aquí, muestra detalles del error.
@@ -77,7 +76,15 @@ export class NuevoPedidoComponent {
       );
     } else {
       // Muestra un mensaje de error o una notificación al usuario para que complete todos los campos.
-      console.error('Completa todos los campos antes de enviar el pedido.');
+      this.snackBar.open('Completa todos los campos antes de enviar el pedido.', 'Cerrar', {
+        duration: 3000,
+      });
     }
+  }
+
+  mostrarSnackBar() {
+    this.snackBar.open('Llene los campos', 'Cerrar', {
+      duration: 3000, // Duración del Snack-bar en milisegundos (3 segundos en este caso)
+    });
   }
 }
