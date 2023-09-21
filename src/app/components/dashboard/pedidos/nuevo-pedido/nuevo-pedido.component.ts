@@ -22,16 +22,7 @@ export class NuevoPedidoComponent {
   constructor(private servidorService: ServidorService, private _snackBar: MatSnackBar, private router: Router, private http: HttpClient, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
-    // Cargar la lista de mesas
-    this.servidorService.getMesaEstado().subscribe(
-      (data: any[]) => {
-        console.log(data);
-        this.mesas = data;
-      },
-      (error) => {
-        console.error('Error al obtener mesas:', error);
-      }
-    );
+    this.actualizarListaMesas();
   }
 
   submitForm() {
@@ -46,6 +37,7 @@ export class NuevoPedidoComponent {
           console.log('Respuesta del servidor:', response);
           this.router.navigate(['/dashboard/pedido']);
           this.mostrarSnackbarExito(`El Pedido ha sido ingresado correctamente.`);
+          this.actualizarListaMesas(); // Actualiza la lista de mesas después de agregar un pedido
         },
         (error) => {
           console.error('Error al enviar el pedido:', error);
@@ -58,5 +50,17 @@ export class NuevoPedidoComponent {
     this._snackBar.open(mensaje, undefined, {
       duration: 3000,
     });
+  }
+
+  private actualizarListaMesas(): void {
+    this.servidorService.getMesaEstado().subscribe(
+      (data: any[]) => {
+        console.log(data);
+        this.mesas = data;
+      },
+      (error) => {
+        console.error('Error al obtener mesas:', error);
+      }
+    );
   }
 }
