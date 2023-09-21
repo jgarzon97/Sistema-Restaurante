@@ -11,6 +11,8 @@ export class PedidosServiceService {
 
   constructor(private http: HttpClient) { }
 
+  // METODOS PARA LAS TABLAS Pedido y Pedido_Producto
+
   getPedidos(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/pedidos`);
   }
@@ -29,5 +31,25 @@ export class PedidosServiceService {
 
   deletePedido(id: number): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/pedido/${id}`);
+  }
+
+  getPedido_Producto(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/pedidoProductos`);
+  }
+
+  getPedido_Productos(id: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/pedidoProducto/${id}`);
+  }
+
+  createPedido_Producto(pedidoData: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/pedidoProducto`, pedidoData);
+  }
+
+  updatePedido_Producto(id: number, pedidoData: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/pedidoProducto/${id}`, pedidoData);
+  }
+
+  deletePedido_Producto(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/pedidoProducto/${id}`);
   }
 }

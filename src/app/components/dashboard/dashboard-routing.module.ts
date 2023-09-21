@@ -7,6 +7,8 @@ import { MenuComponent } from './menu/menu.component';
 import { PagoComponent } from './pago/pago.component';
 import { NuevoMenuComponent } from './menu/nuevo-menu/nuevo-menu.component';
 import { NuevoPedidoComponent } from './pedidos/nuevo-pedido/nuevo-pedido.component';
+import { DetallePedidoComponent } from './pedidos/detalle-pedido/detalle-pedido.component';
+
 
 const routes: Routes = [
   { path: '', component: DashboardComponent, children: [
@@ -15,7 +17,8 @@ const routes: Routes = [
     { path: 'menu', component: MenuComponent },
     { path: 'pago', component: PagoComponent },
     { path: 'nuevo-menu', component: NuevoMenuComponent },
-    { path: 'nuevo-pedido', component: NuevoPedidoComponent }
+    { path: 'nuevo-pedido', component: NuevoPedidoComponent },
+    { path: 'detalle-pedido', component: DetallePedidoComponent }
   ] }
 ];
 
