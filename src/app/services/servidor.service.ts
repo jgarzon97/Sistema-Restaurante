@@ -7,13 +7,9 @@ import { Observable } from 'rxjs';
 })
 export class ServidorService {
 
-  private apiUrl = 'http://localhost:3000'; // La URL base de tu servidor Express
+  private apiUrl = 'http://localhost:3000'; // La URL base del servidor Express
 
   constructor(private http: HttpClient) { }
-
-  getPedidos(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/pedidos`);
-  }
 
   crearPedido(pedidoData: any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/pedido`, pedidoData);
@@ -21,6 +17,10 @@ export class ServidorService {
 
   getMesas(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/mesas`);
+  }
+
+  getMesaEstado(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/mesasDisponible`);
   }
 
   getUsuarios(): Observable<any[]> {

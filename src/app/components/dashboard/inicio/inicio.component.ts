@@ -11,7 +11,7 @@ import { ServidorService } from 'src/app/services/servidor.service';
 
 export class InicioComponent {
 
-  displayedColumns: string[] = ['num_mesa', 'capacidad', 'estado'];
+  displayedColumns: string[] = ['num_mesa', 'capacidad', 'estado', 'acciones'];
   dataSource: any[] = [];
 
   constructor(private snackBar: MatSnackBar, private servidor: ServidorService) {}
@@ -21,5 +21,9 @@ export class InicioComponent {
       console.log(data); // Verifica si estás recibiendo datos y su estructura
       this.dataSource = data;
     });
+  }
+
+  borrarPedido(id: number): void {
+
   }
 }

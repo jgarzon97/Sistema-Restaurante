@@ -20,6 +20,10 @@ th {
     text-align: center;
 }
 
+.mat-column-acciones {
+    text-align: center;
+}
+
 .custom-content {
     border: 1px solid #ccc;
     padding: 5px;
@@ -38,6 +42,14 @@ th {
 
 .red-button {
     background-color: rgb(217, 45, 45);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.gray-button {
+    background-color: gray;
     color: white;
     border: none;
     padding: 5px 10px;

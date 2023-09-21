@@ -1,10 +1,10 @@
-<div class="container">
+<div class="container mat-elevation-z3">
     <mat-toolbar>
         <span>MESAS DISPONIBLES</span>
         <div class="example-spacer"></div>
     </mat-toolbar>
 
-    <div class="mat-elevation-z3" style="margin-top: 10px;">
+    <div class="mat-elevation-z3" style="margin-top: 20px;">
         <table mat-table [dataSource]="dataSource" matSort>
 
             <ng-container matColumnDef="num_mesa">
@@ -25,20 +25,37 @@
                 </td>
             </ng-container>
 
-
             <ng-container matColumnDef="estado">
                 <th mat-header-cell *matHeaderCellDef> Estado </th>
                 <td mat-cell *matCellDef="let element">
-                    <button [ngClass]="element.estado === 'Disponible' ? 'green-button' : 'red-button'"
-                        *ngIf="element.estado === 'Disponible'; else notAvailable">
-                        <a routerLink="/dashboard/nuevo-pedido"> {{ element.estado }} </a>
+                    <button [ngClass]="
+                        element.estado === 'Disponible' ? 'green-button' :
+                        element.estado === 'No disponible' ? 'red-button' : 'gray-button'"
+                        *ngIf="element.estado === 'Disponible' || element.estado === 'No disponible' || element.estado === 'Deshabilitado'; else notAvailable">
+                        <a [routerLink]="element.estado === 'Deshabilitado' ? '' : '/dashboard/nuevo-pedido'">
+                            {{ element.estado }}
+                        </a>
                     </button>
                     <ng-template #notAvailable>
                         <button [ngClass]="element.estado === 'Disponible' ? 'green-button' : 'red-button'">
                             {{ element.estado }}
                         </button>
                     </ng-template>
+                </td>
+            </ng-container>
 
+            <ng-container matColumnDef="acciones">
+                <th mat-header-cell *matHeaderCellDef> Acciones </th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-button matTooltip="Detalles">
+                        <mat-icon>description</mat-icon>
+                    </button>
+                    <button mat-button matTooltip="Editar">
+                        <mat-icon>search</mat-icon>
+                    </button>
+                    <button mat-button matTooltip="Eliminar">
+                        <mat-icon>delete</mat-icon>
+                    </button>
                 </td>
             </ng-container>
 

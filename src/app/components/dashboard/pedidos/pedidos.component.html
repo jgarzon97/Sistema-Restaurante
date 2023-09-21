@@ -1,16 +1,16 @@
-<div class="container">
+<div class="container mat-elevation-z3">
     <mat-toolbar>
         <span>LISTADO DE PEDIDOS</span>
         <div class="example-spacer"></div>
         <button mat-raised-button color="primary" routerLink="/dashboard/nuevo-pedido">AGREGAR</button>
     </mat-toolbar>
 
-    <div class="mat-elevation-z3" style="margin-top: 10px;">
+    <div class="mat-elevation-z3" style="margin-top: 20px;">
         <table mat-table [dataSource]="dataSource" matSort>
 
-            <ng-container matColumnDef="num_pedido">
-                <th mat-header-cell *matHeaderCellDef> Pedido </th>
-                <td mat-cell *matCellDef="let element"> {{ element.num_pedido }} </td>
+            <ng-container matColumnDef="id_pedido">
+                <th mat-header-cell *matHeaderCellDef> No. </th>
+                <td mat-cell *matCellDef="let element"> {{ element.id_pedido }} </td>
             </ng-container>
 
             <ng-container matColumnDef="fecha">
@@ -30,19 +30,33 @@
 
             <ng-container matColumnDef="id_mesa">
                 <th mat-header-cell *matHeaderCellDef> Mesa </th>
-                <td mat-cell *matCellDef="let element"> {{ element.id_mesa }} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="id_cliente">
-                <th mat-header-cell *matHeaderCellDef> Cliente </th>
-                <td mat-cell *matCellDef="let element"> {{ element.id_cliente }} </td>
+                <td mat-cell *matCellDef="let element">
+                    <div class="custom-content">
+                        {{ element.id_mesa }}
+                    </div>
+                </td>
             </ng-container>
 
             <ng-container matColumnDef="estado">
-                <th mat-header-cell *matHeaderCellDef> Estado </th>
+                <th mat-header-cell *matHeaderCellDef> Pago </th>
                 <td mat-cell *matCellDef="let element">
                     <button [ngClass]="element.estado === 'Cancelado' ? 'green-button' : 'red-button'">
                         {{ element.estado }}
+                    </button>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="acciones">
+                <th mat-header-cell *matHeaderCellDef> Acciones </th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-button matTooltip="Detalles">
+                        <mat-icon>description</mat-icon>
+                    </button>
+                    <button mat-button matTooltip="Editar">
+                        <mat-icon>search</mat-icon>
+                    </button>
+                    <button mat-button matTooltip="Eliminar" (click)="borrarPedido(element.id_pedido)">
+                        <mat-icon>delete</mat-icon>
                     </button>
                 </td>
             </ng-container>

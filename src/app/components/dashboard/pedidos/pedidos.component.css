@@ -36,6 +36,17 @@ th {
     text-align: center;
 }
 
+.mat-column-acciones {
+    text-align: center;
+}
+
+.custom-content {
+    border: 1px solid #ccc;
+    padding: 5px;
+    display: inline-block;
+    border-radius: 5px;
+}
+
 .green-button {
     background-color: rgb(35, 202, 35);
     color: white;

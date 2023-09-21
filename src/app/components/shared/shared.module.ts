@@ -21,7 +21,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
-
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [],
@@ -43,7 +43,8 @@ import { FormsModule } from '@angular/forms';
     MatCardModule,
     MatGridListModule,
     MatSelectModule,
-    FormsModule
+    FormsModule,
+    MatTooltipModule
   ],
   exports:[
     CommonModule,
@@ -63,7 +64,8 @@ import { FormsModule } from '@angular/forms';
     MatCardModule,
     MatGridListModule,
     MatSelectModule,
-    FormsModule
+    FormsModule,
+    MatTooltipModule
   ]
 })
 export class SharedModule { }

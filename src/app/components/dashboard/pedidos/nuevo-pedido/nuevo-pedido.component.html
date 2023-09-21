@@ -1,62 +1,45 @@
-<div class="container">
+<div class="container mat-elevation-z3">
     <mat-toolbar>
         <span>INGRESAR PEDIDO</span>
     </mat-toolbar>
+    <div class="mat-elevation-z3">
+        <mat-card style="margin-top: 10px;">
+            <form (ngSubmit)="submitForm()" style="margin-top: 10px;">
+                <mat-grid-list cols="4" rowHeight="70px">
 
-    <mat-card style="margin-top: 10px;">
-        <form (ngSubmit)="submitForm()" style="margin-top: 10px;">
-            <mat-grid-list cols="4" rowHeight="70px">
+                    <mat-grid-tile [colspan]="1" [rowspan]="1">
+                        <mat-form-field class="ancho">
+                            <mat-label>Usuario</mat-label>
+                            <input matInput [(ngModel)]="formData.id_usuario" id="id_usuario" name="id_usuario">
+                        </mat-form-field>
+                    </mat-grid-tile>
 
-                <mat-grid-tile [colspan]="1" [rowspan]="1">
-                    <mat-form-field class="ancho">
-                        <mat-label>No. Pedido</mat-label>
-                        <input matInput [(ngModel)]="formData.num_pedido" id="num_pedido" name="num_pedido">
-                    </mat-form-field>
-                </mat-grid-tile>
+                    <mat-grid-tile [colspan]="3" [rowspan]="5">
+                        <img src="./assets/img/facturacion.png" width="400" height="400">
+                    </mat-grid-tile>
 
-                <mat-grid-tile [colspan]="3" [rowspan]="5">
-                    <img src="./assets/img/facturacion.png" width="400" height="400">
-                </mat-grid-tile>
 
-                <mat-grid-tile [colspan]="1" [rowspan]="1">
-                    <mat-form-field class="ancho">
-                        <mat-label>Usuario</mat-label>
-                        <input matInput [(ngModel)]="formData.id_usuario" id="id_usuario" name="id_usuario">
-                    </mat-form-field>
-                </mat-grid-tile>
+                    <!-- Selecciona una mesa de la lista de Mesas disponibles. -->
+                    <mat-grid-tile [colspan]="1" [rowspan]="1">
+                        <mat-form-field>
+                            <mat-label>Selecciona una mesa</mat-label>
+                            <mat-select [(ngModel)]="formData.id_mesa" id="id_mesa" name="id_mesa">
+                                <mat-option *ngFor="let mesa of mesas" [value]="mesa.id_mesa">
+                                    {{ mesa.num_mesa }}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </mat-grid-tile>
 
-                <!-- Selecciona una mesa de la lista de Mesas disponibles. -->
-                <mat-grid-tile [colspan]="1" [rowspan]="1">
-                    <mat-form-field>
-                        <mat-label>Selecciona una mesa</mat-label>
-                        <mat-select [(ngModel)]="formData.id_mesa" id="id_mesa" name="id_mesa">
-                            <mat-option *ngFor="let mesa of mesas" [value]="mesa.id_mesa">
-                                {{ mesa.num_mesa }}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </mat-grid-tile>
+                    <mat-grid-tile [colspan]="2" [rowspan]="1">
+                        <button mat-raised-button color="primary" type="submit">Aceptar</button>
+                    </mat-grid-tile>
 
-                <!-- Selecciona un Cliente. -->
-                <mat-grid-tile [colspan]="1" [rowspan]="1">
-                    <mat-form-field>
-                        <mat-label>Cliente</mat-label>
-                        <mat-select [(ngModel)]="formData.id_cliente" id="id_cliente" name="id_cliente">
-                            <mat-option *ngFor="let cliente of clientes" [value]="cliente.id_cliente">
-                                {{ cliente.nombre }}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </mat-grid-tile>
-
-                <mat-grid-tile [colspan]="2" [rowspan]="1">
-                    <button mat-raised-button color="primary" type="submit">Aceptar</button>
-                </mat-grid-tile>
-
-                <mat-grid-tile [colspan]="2" [rowspan]="1">
-                    <button mat-raised-button (click)="mostrarSnackBar()" routerLink="/dashboard/pedido">Volver</button>
-                </mat-grid-tile>
-            </mat-grid-list>
-        </form>
-    </mat-card>
+                    <mat-grid-tile [colspan]="2" [rowspan]="1">
+                        <button mat-raised-button type="button" routerLink="/dashboard/pedidos">Volver</button>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </form>
+        </mat-card>
+    </div>
 </div>

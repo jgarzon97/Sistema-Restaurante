@@ -7,6 +7,11 @@ th {
     font-weight: bold;
 }
 
+.mat-column-id_producto {
+    border-right: 1px solid currentColor;
+    text-align: center;
+}
+
 .mat-header-cell {
     text-align: center;
 }
@@ -15,15 +20,7 @@ th {
     text-align: center;
 }
 
-.mat-column-stock {
-    text-align: center;
-}
-
 .mat-column-precio {
-    text-align: center;
-}
-
-.mat-column-tiempo {
     text-align: center;
 }
 
@@ -35,8 +32,36 @@ th {
     text-align: center;
 }
 
+.mat-column-acciones {
+    text-align: center;
+}
+
+.mat-column-acciones a {
+    cursor: pointer;
+}
+
 .mat-mdc-form-field {
     padding-top: 10px;
     font-size: 14px;
     width: 100%;
+}
+
+.green-button {
+    background-color: rgb(35, 202, 35);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.red-button {
+    background-color: rgb(217, 45, 45);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.paginator-container {
+    margin-bottom: 20px;
 }
