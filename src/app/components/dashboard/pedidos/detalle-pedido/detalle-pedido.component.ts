@@ -28,7 +28,7 @@ export class DetallePedidoComponent {
       this.formData.id_pedido = params['id_pedido'];
     });
   }
-
+  
   submitForm() {
     if (this.formData.id_pedido && this.formData.id_producto && this.formData.cantidad) {
       const pedidoProductoData = {
@@ -40,11 +40,10 @@ export class DetallePedidoComponent {
       this.servidorService.createPedido_Producto(pedidoProductoData).subscribe(
         (response) => {
           console.log('Respuesta del servidor:', response);
-          this.router.navigate(['/dashboard/pedido']);
-          this.mostrarSnackbarExito(`Los detalles se ingresaron correctamente.`);
+          this.mostrarSnackbar(`Los detalles se ingresaron correctamente.`);
         },
         (error) => {
-          console.error('Error al enviar los detalles del pedido:', error);
+          this.mostrarSnackbar(`Ha ocurrido un error en el ingreso.`);
         }
       );
     } else {
@@ -52,7 +51,7 @@ export class DetallePedidoComponent {
     }
   }
   
-  private mostrarSnackbarExito(mensaje: string): void {
+  private mostrarSnackbar(mensaje: string): void {
     this._snackBar.open(mensaje, undefined, {
       duration: 3000,
     });
