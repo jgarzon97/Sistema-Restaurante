@@ -30,7 +30,26 @@ export class MenuComponent {
   ngOnInit(): void {
     this.servidor.getProductos().subscribe(data => {
       console.log(data);
-      // Agrega los datos al dataSource en lugar de asignar directamente a la propiedad dataSource
+      this.dataSource.data = data;
+    });
+  }
+
+  borrarProducto(id: number): void {
+    this.servidor.deleteProducto(id).subscribe((resultado) => {
+      this.mostrarSnackbar(`El Producto ${id} ha sido borrado.`);
+      this.ActualizarProductos();
+    });
+  }
+
+  
+  private mostrarSnackbar(mensaje: string): void {
+    this.snackBar.open(mensaje, undefined, {
+      duration: 1000,
+    });
+  }
+
+  private ActualizarProductos(): void {
+    this.servidor.getProductos().subscribe((data) => {
       this.dataSource.data = data;
     });
   }

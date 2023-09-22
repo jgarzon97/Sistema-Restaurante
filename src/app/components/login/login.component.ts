@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LoginServiceService } from 'src/app/services/login.service.service';
 
 @Component({
@@ -9,17 +9,26 @@ import { LoginServiceService } from 'src/app/services/login.service.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent {
   form: FormGroup;
   loading = false;
 
-  constructor(private loginService: LoginServiceService, private fb: FormBuilder, private _snackBar: MatSnackBar, private router: Router) {
+  constructor(private loginService: LoginServiceService, private route: ActivatedRoute, private fb: FormBuilder, private _snackBar: MatSnackBar, private router: Router) {
     this.form = this.fb.group({
       usuario: ['', Validators.required],
       password: ['', Validators.required]
     })
   }
 
+  ngOnInit(): void {
+    this.route.paramMap.subscribe(params => {
+      const id = params.get('id');
+      if (id) {
+        console.log('Valor de id:', id);
+      }
+    });
+  }
   Ingresar() {
     if (this.form.invalid) {
       return;
@@ -29,13 +38,14 @@ export class LoginComponent {
     const password = this.form.value.password;
 
     this.loading = true;
-
     this.loginService.authUsuario(usuario, password).subscribe(
       (response) => {
         console.log(response);
         this.loading = false;
         this.bienvenido();
-        this.fakeloading();
+        // Navegar a la página de Dashboard con el ID de usuario
+        const idUsuario = response.id;
+        this.router.navigate(['/dashboard']);
       },
       (error) => {
         console.error(error);

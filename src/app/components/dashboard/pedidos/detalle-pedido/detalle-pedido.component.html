@@ -2,18 +2,45 @@
     <mat-toolbar>
         <span>DETALLES DEL PEDIDO</span>
     </mat-toolbar>
-    <form class="example-form" style="padding: 20px;">
-        <mat-form-field class="example-full-width">
-            <mat-label>Pedido</mat-label>
-            <input matInput placeholder="Id. Pedido">
-        </mat-form-field>
-        <mat-form-field class="example-full-width">
-            <mat-label>Producto</mat-label>
-            <input matInput placeholder="Id. Producto">
-        </mat-form-field>
-        <mat-form-field class="example-full-width">
-            <mat-label>Cantidad</mat-label>
-            <input matInput placeholder="Cantidad">
-        </mat-form-field>
-    </form>
+    <div class="mat-elevation-z3">
+        <mat-card style="margin-top: 10px;">
+            <form (ngSubmit)="submitForm()" style="margin-top: 10px;">
+                <mat-grid-list cols="4" rowHeight="70px">
+
+                    <mat-grid-tile [colspan]="1" [rowspan]="1">
+                        <mat-form-field>
+                            <mat-label>Pedido</mat-label>
+                            <input matInput [(ngModel)]="formData.id_pedido" id="id_pedido" name="id_pedido" [readonly]="true">
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile [colspan]="3" [rowspan]="5">
+                        <img src="./assets/img/facturacion.png" width="400" height="400">
+                    </mat-grid-tile>
+
+                    <mat-grid-tile [colspan]="1" [rowspan]="1">
+                        <mat-form-field>
+                            <mat-label>Producto</mat-label>
+                            <input matInput [(ngModel)]="formData.id_producto" id="id_producto" name="id_producto">
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile [colspan]="1" [rowspan]="1">
+                        <mat-form-field>
+                            <mat-label>Cantidad</mat-label>
+                            <input matInput [(ngModel)]="formData.cantidad" id="cantidad" name="cantidad">
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile [colspan]="2" [rowspan]="1">
+                        <button mat-raised-button color="primary" type="submit">Aceptar</button>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile [colspan]="2" [rowspan]="1">
+                        <button mat-raised-button type="button" routerLink="/dashboard/pedidos">Volver</button>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </form>
+        </mat-card>
+    </div>
 </div>

@@ -7,7 +7,7 @@
 
     <mat-form-field>
         <mat-label>Buscar producto</mat-label>
-        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ham" #input>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Nombre del producto" #input>
     </mat-form-field>
 
     <div class="mat-elevation-z3" style="margin-top: 10px;">
@@ -45,13 +45,13 @@
             <ng-container matColumnDef="acciones">
                 <th mat-header-cell *matHeaderCellDef> Acciones </th>
                 <td mat-cell *matCellDef="let element">
-                    <a  matTooltip="Detalle">
-                        <mat-icon>search</mat-icon>
+                    <a mat-button matTooltip="Detalle" [routerLink]="['/dashboard/nuevo-menu']" [queryParams]="{ id_peid_productodido: element.id_producto }">
+                        <mat-icon>description</mat-icon>
                     </a>
-                    <a  matTooltip="Editar">
+                    <a mat-button matTooltip="Editar" [routerLink]="['/dashboard/nuevo-menu']" [queryParams]="{ id_producto: element.id_producto }">
                         <mat-icon>edit</mat-icon>
                     </a>
-                    <a  matTooltip="Eliminar">
+                    <a mat-button matTooltip="Eliminar" (click)="borrarProducto(element.id_producto)">
                         <mat-icon>delete</mat-icon>
                     </a>
                 </td>

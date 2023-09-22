@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTable } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { PedidosServiceService } from 'src/app/services/pedidos.service.service';
 
 @Component({
@@ -14,7 +15,9 @@ export class PedidosComponent {
 
   @ViewChild(MatTable) table!: MatTable<any>;
 
-  constructor(private servidor: PedidosServiceService, private _snackBar: MatSnackBar) {}
+  formData: { id_pedido?: string } = {};
+
+  constructor(private servidor: PedidosServiceService, private _snackBar: MatSnackBar, private router: Router) { }
 
   ngOnInit(): void {
     this.servidor.getPedidos().subscribe(data => {
@@ -46,5 +49,9 @@ export class PedidosComponent {
     this.servidor.getPedidos().subscribe((data) => {
       this.dataSource = data;
     });
+  }
+
+  verDetallePedido(id_pedido: string): void {
+    this.router.navigate(['/dashboard/detalle-pedido', id_pedido]);
   }
 }

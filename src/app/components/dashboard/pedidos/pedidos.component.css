@@ -7,7 +7,7 @@ th {
     font-weight: bold;
 }
 
-.mat-column-num_pedido {
+.mat-column-id_pedido {
     border-right: 1px solid currentColor;
     text-align: center;
 }
@@ -53,7 +53,6 @@ th {
     border: none;
     padding: 5px 10px;
     border-radius: 5px;
-    cursor: pointer;
 }
 
 .red-button {
@@ -62,5 +61,4 @@ th {
     border: none;
     padding: 5px 10px;
     border-radius: 5px;
-    cursor: pointer;
 }
