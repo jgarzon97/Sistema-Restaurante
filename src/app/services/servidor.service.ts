@@ -23,14 +23,6 @@ export class ServidorService {
     return this.http.get<any[]>(`${this.apiUrl}/mesasDisponible`);
   }
 
-  getUsuarios(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/usuarios`);
-  }
-
-  crearUsuario(usuarioData: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/usuario`, usuarioData);
-  }
-
   getCategorias(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/categorias`);
   }

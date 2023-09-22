@@ -25,7 +25,7 @@ export class PedidosComponent {
 
   borrarPedido(id: number): void {
     this.servidor.deletePedido(id).subscribe((resultado) => {
-      this.mostrarSnackbarExito(`El Pedido ${id} ha sido borrado.`);
+      this.mostrarSnackbar(`El Pedido ${id} ha sido borrado.`);
       this.actualizarListaPedidos();
     });
   }
@@ -36,7 +36,7 @@ export class PedidosComponent {
     });
   }
 
-  private mostrarSnackbarExito(mensaje: string): void {
+  private mostrarSnackbar(mensaje: string): void {
     this._snackBar.open(mensaje, undefined, {
       duration: 1000,
     });
