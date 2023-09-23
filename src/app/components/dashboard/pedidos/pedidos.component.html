@@ -1,11 +1,11 @@
-<div class="container mat-elevation-z3">
+<div class="container mat-elevation-z5">
     <mat-toolbar>
         <span>LISTADO DE PEDIDOS</span>
         <div class="example-spacer"></div>
         <button mat-raised-button color="primary" routerLink="/dashboard/nuevo-pedido">AGREGAR</button>
     </mat-toolbar>
 
-    <div class="mat-elevation-z3" style="margin-top: 20px;">
+    <div style="margin-top: 10px;">
         <table mat-table [dataSource]="dataSource" matSort>
 
             <ng-container matColumnDef="id_pedido">

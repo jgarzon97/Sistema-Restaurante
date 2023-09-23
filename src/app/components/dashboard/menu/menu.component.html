@@ -1,16 +1,16 @@
-<div class="container mat-elevation-z3">
+<div class="container mat-elevation-z5">
     <mat-toolbar>
         <span>LISTADO DE PRODUCTOS - MENU</span>
         <div class="example-spacer"></div>
         <button mat-raised-button color="primary" routerLink="/dashboard/nuevo-menu">AGREGAR</button>
     </mat-toolbar>
 
-    <mat-form-field>
+    <mat-form-field style="margin-top: 10px;">
         <mat-label>Buscar producto</mat-label>
         <input matInput (keyup)="applyFilter($event)" placeholder="Nombre del producto" #input>
     </mat-form-field>
 
-    <div class="mat-elevation-z3" style="margin-top: 10px;">
+    <div style="margin-top: 10px;">
         <table mat-table [dataSource]="dataSource" matSort>
 
             <ng-container matColumnDef="id_producto">
