@@ -1,0 +1,14 @@
+[
+    {
+        "nombre": "Inicio",
+        "redirect": "/dashboard.c/inicio"
+    },
+    {
+        "nombre": "Pedidos",
+        "redirect": "/dashboard.c/pedidos"
+    },
+    {
+        "nombre": "Pago",
+        "redirect": "/dashboard.c/pago"
+    }
+]

@@ -10,7 +10,8 @@
                     <mat-grid-tile [colspan]="1" [rowspan]="1">
                         <mat-form-field>
                             <mat-label>Pedido</mat-label>
-                            <input matInput [(ngModel)]="formData.id_pedido" id="id_pedido" name="id_pedido" [readonly]="true">
+                            <input matInput [(ngModel)]="formData.id_pedido" id="id_pedido" name="id_pedido"
+                                [readonly]="true">
                         </mat-form-field>
                     </mat-grid-tile>
 
@@ -21,9 +22,15 @@
                     <mat-grid-tile [colspan]="1" [rowspan]="1">
                         <mat-form-field>
                             <mat-label>Producto</mat-label>
-                            <input matInput [(ngModel)]="formData.id_producto" id="id_producto" name="id_producto">
+                            <input matInput [(ngModel)]="formData.id_producto" id="id_producto" name="id_producto"
+                                [matAutocomplete]="auto" (blur)="cargarProductos()">
+                            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                                <mat-option *ngFor="let producto of productos | async" [value]="producto.id">{{
+                                    producto.nombre }}</mat-option>
+                            </mat-autocomplete>
                         </mat-form-field>
                     </mat-grid-tile>
+
 
                     <mat-grid-tile [colspan]="1" [rowspan]="1">
                         <mat-form-field>
