@@ -29,7 +29,8 @@ export class LoginComponent {
       }
     });
   }
-  Ingresar() {
+
+  ingresar() {
     if (this.form.invalid) {
       return;
     }
@@ -42,26 +43,36 @@ export class LoginComponent {
       (response) => {
         console.log(response);
         this.loading = false;
-        this.bienvenido();
+        this.mostrarMensajeBienvenida(response.rol, response.nombre);
         // Navegar a la página de Dashboard con el ID de usuario
-        const idUsuario = response.id;
+        //const idUsuario = response.id;
         this.router.navigate(['/dashboard']);
       },
       (error) => {
         console.error(error);
         this.loading = false;
-        this.error();
+        this.mostrarError();
         this.form.reset();
       }
     );
   }
 
-  bienvenido() {
-    this._snackBar.open('Bienvenido al sistema', undefined, {
+  mostrarMensajeBienvenida(rol: string, nombre: string) {
+    let mensajeBienvenida = '';
+
+    if (rol === '1') {
+      mensajeBienvenida = `Bienvenido Administrador, ${nombre}`;
+    } else if (rol === '2') {
+      mensajeBienvenida = `Bienvenido Camarero, ${nombre}`;
+    }
+  }
+
+  mostrarError() {
+    this._snackBar.open('Error al autenticar', undefined, {
       duration: 1500,
       horizontalPosition: 'center',
       verticalPosition: 'bottom'
-    })
+    });
   }
 
   error() {

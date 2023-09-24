@@ -14,11 +14,11 @@ export class NavbarComponent implements OnInit {
   constructor(private _rutasService : RutasService) { }
 
   ngOnInit(): void {
-    this.cargarMenu();
+    this.cargarRutas();
   }
 
-  cargarMenu() {
-    this._rutasService.geRoutes().subscribe(data => {
+  cargarRutas() {
+    this._rutasService.RoutesAdmin().subscribe(data => {
       this.rutas = data;
     });
   }

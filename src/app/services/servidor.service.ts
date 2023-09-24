@@ -34,7 +34,11 @@ export class ServidorService {
   crearProducto(productoData: any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/producto`, productoData);
   }
-  
+
+  getProducto(id: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/producto/${id}`);
+  }
+
   updateProducto(id: number, productoData: any): Observable<any> {
     return this.http.put<any>(`${this.apiUrl}/producto/${id}`, productoData);
   }

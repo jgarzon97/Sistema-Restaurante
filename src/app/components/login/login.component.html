@@ -1,7 +1,7 @@
 <div class="body">
     <div class="login">
         <mat-spinner *ngIf="loading" class="spinner" diameter="50"></mat-spinner>
-        <form *ngIf="!loading" [formGroup]="form" (ngSubmit)="Ingresar()">
+        <form *ngIf="!loading" [formGroup]="form" (ngSubmit)="ingresar()">
             <img src="./assets/img/facturacion.png" width="50% ">
             <h1>Login</h1>
             <mat-form-field>

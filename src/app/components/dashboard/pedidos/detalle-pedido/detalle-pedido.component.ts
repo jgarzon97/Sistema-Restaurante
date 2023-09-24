@@ -2,7 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { PedidosServiceService } from 'src/app/services/pedidos.service.service';
+import { ServidorService } from 'src/app/services/servidor.service';
+
 
 @Component({
   selector: 'app-detalle-pedido',
@@ -12,32 +15,35 @@ import { PedidosServiceService } from 'src/app/services/pedidos.service.service'
 
 export class DetallePedidoComponent {
 
-  mesas: any[] = [];
-  selectedMesa: any;
+  productos: Observable<any[]> = this.servidorService.getProductos();
 
   formData = {
     id_pedido: '',
     id_producto: '',
-    cantidad: ''
+    cantidad: '',
+    detalle: ''
   };
 
-  constructor(private servidorService: PedidosServiceService, private activatedRoute: ActivatedRoute, private _snackBar: MatSnackBar, private route: ActivatedRoute, private router: Router, private http: HttpClient, private snackBar: MatSnackBar) { }
-  
+  constructor(private pedidoservidorService: PedidosServiceService, private servidorService: ServidorService, private activatedRoute: ActivatedRoute, private _snackBar: MatSnackBar) { }
+
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
       this.formData.id_pedido = params['id_pedido'];
     });
+
+    this.cargarProductos();
   }
-  
+
   submitForm() {
     if (this.formData.id_pedido && this.formData.id_producto && this.formData.cantidad) {
       const pedidoProductoData = {
         id_pedido: this.formData.id_pedido,
         id_producto: this.formData.id_producto,
-        cantidad: this.formData.cantidad
+        cantidad: this.formData.cantidad,
+        detalle: this.formData.detalle
       };
-  
-      this.servidorService.createPedido_Producto(pedidoProductoData).subscribe(
+
+      this.pedidoservidorService.createPedido_Producto(pedidoProductoData).subscribe(
         (response) => {
           console.log('Respuesta del servidor:', response);
           this.mostrarSnackbar(`Los detalles se ingresaron correctamente.`);
@@ -50,18 +56,45 @@ export class DetallePedidoComponent {
       this.mostrarSnackbarError('Completa todos los campos antes de enviar los detalles del pedido.');
     }
   }
+
+  cargarProductos() {
+    this.productos = this.servidorService.getProductos();
+  }
+
+  buscarProducto() {
+    const productoIdString = this.formData.id_producto; // Asumiendo que esto es una cadena
+    const productoId = parseInt(productoIdString, 10); // Convierte la cadena a un número entero (base 10)
   
+    if (!isNaN(productoId)) { // Verifica si la conversión fue exitosa
+      this.servidorService.getProducto(productoId).subscribe(
+        (producto) => {
+          // Aquí puedes asignar otros valores del producto a formData si es necesario
+        },
+        (error) => {
+          console.error('Error al obtener el producto:', error);
+        }
+      );
+    } else {
+      console.error('El valor de productoId no es un número válido.');
+    }
+  }
+  
+
+
   private mostrarSnackbar(mensaje: string): void {
     this._snackBar.open(mensaje, undefined, {
       duration: 3000,
     });
   }
-  
+
   private mostrarSnackbarError(mensaje: string): void {
     this._snackBar.open(mensaje, undefined, {
       duration: 3000,
       panelClass: ['error-snackbar']
     });
   }
-  
+
+  displayFn(producto: any): string {
+    return producto ? producto.nombre : '';
+  }
 }
