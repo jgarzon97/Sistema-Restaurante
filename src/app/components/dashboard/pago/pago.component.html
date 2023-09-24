@@ -2,4 +2,20 @@
     <mat-toolbar>
         <span>REGISTROS DE FACTURAS</span>
     </mat-toolbar>
+
+    <div class="mat-elevation-z3">
+        <mat-card style="margin-top: 10px;">
+            <form (ngSubmit)="submitForm()" style="margin-top: 10px;">
+                <mat-grid-list cols="4" rowHeight="70px">
+
+                    <mat-grid-tile [colspan]="1" [rowspan]="1">
+                        <mat-form-field>
+                            <mat-label>Pedido</mat-label>
+                            <input matInput [(ngModel)]="formData.numero" id="numero" name="numero">
+                        </mat-form-field>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </form>
+        </mat-card>
+    </div>
 </div>

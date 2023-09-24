@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-pago',
@@ -7,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class PagoComponent {
 
+  formData = {
+    numero: '',
+    id_producto: '',
+    cantidad: '',
+    detalle: ''
+  };
+
+  submitForm(){
+
+  }
 }

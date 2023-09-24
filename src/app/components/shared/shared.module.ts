@@ -22,6 +22,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+
 
 @NgModule({
   declarations: [],
@@ -44,7 +46,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatGridListModule,
     MatSelectModule,
     FormsModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatAutocompleteModule
   ],
   exports:[
     CommonModule,
@@ -65,7 +68,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatGridListModule,
     MatSelectModule,
     FormsModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatAutocompleteModule
   ]
 })
 export class SharedModule { }

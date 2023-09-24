@@ -18,7 +18,8 @@ export class DetallePedidoComponent {
   formData = {
     id_pedido: '',
     id_producto: '',
-    cantidad: ''
+    cantidad: '',
+    detalle: ''
   };
 
   constructor(private servidorService: PedidosServiceService, private activatedRoute: ActivatedRoute, private _snackBar: MatSnackBar, private route: ActivatedRoute, private router: Router, private http: HttpClient, private snackBar: MatSnackBar) { }
@@ -34,7 +35,8 @@ export class DetallePedidoComponent {
       const pedidoProductoData = {
         id_pedido: this.formData.id_pedido,
         id_producto: this.formData.id_producto,
-        cantidad: this.formData.cantidad
+        cantidad: this.formData.cantidad,
+        detalle: this.formData.detalle
       };
   
       this.servidorService.createPedido_Producto(pedidoProductoData).subscribe(

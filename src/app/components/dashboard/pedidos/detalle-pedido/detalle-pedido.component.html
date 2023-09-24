@@ -32,6 +32,13 @@
                         </mat-form-field>
                     </mat-grid-tile>
 
+                    <mat-grid-tile [colspan]="1" [rowspan]="1">
+                        <mat-form-field>
+                            <mat-label>Detalles</mat-label>
+                            <input matInput [(ngModel)]="formData.detalle" id="detalle" name="detalle">
+                        </mat-form-field>
+                    </mat-grid-tile>
+
                     <mat-grid-tile [colspan]="2" [rowspan]="1">
                         <button mat-raised-button color="primary" type="submit">Aceptar</button>
                     </mat-grid-tile>
