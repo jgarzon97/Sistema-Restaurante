@@ -46,7 +46,7 @@ export class LoginComponent {
         this.mostrarMensajeBienvenida(response.rol, response.nombre);
         // Navegar a la página de Dashboard con el ID de usuario
         //const idUsuario = response.id;
-        this.router.navigate(['/dashboard']);
+        this.fakeloading()
       },
       (error) => {
         console.error(error);
@@ -86,7 +86,7 @@ export class LoginComponent {
   fakeloading() {
     this.loading = true;
     setTimeout(() => {
-      this.router.navigate(['dashboard'])
+      this.router.navigate(['/dashboard/inicio']);
     }, 1500);
   }
 }

@@ -9,7 +9,7 @@
         <mat-label>Buscar producto</mat-label>
         <input matInput (keyup)="applyFilter($event)" placeholder="Nombre del producto" #input>
     </mat-form-field>
-    
+
     <table mat-table [dataSource]="dataSource" matSort>
         <ng-container matColumnDef="id_producto">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>

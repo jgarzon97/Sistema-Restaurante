@@ -3,19 +3,46 @@
         <span>REGISTROS DE FACTURAS</span>
     </mat-toolbar>
 
-    <div class="mat-elevation-z3">
-        <mat-card style="margin-top: 10px;">
-            <form (ngSubmit)="submitForm()" style="margin-top: 10px;">
-                <mat-grid-list cols="4" rowHeight="70px">
+    <div style="margin-top: 10px;">
+        <table mat-table [dataSource]="dataSource" matSort>
 
-                    <mat-grid-tile [colspan]="1" [rowspan]="1">
-                        <mat-form-field>
-                            <mat-label>Pedido</mat-label>
-                            <input matInput [(ngModel)]="formData.numero" id="numero" name="numero">
-                        </mat-form-field>
-                    </mat-grid-tile>
-                </mat-grid-list>
-            </form>
-        </mat-card>
+            <ng-container matColumnDef="id_factura">
+                <th mat-header-cell *matHeaderCellDef> No. </th>
+                <td mat-cell *matCellDef="let element"> {{ element.id_factura }} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="numero">
+                <th mat-header-cell *matHeaderCellDef> Factura </th>
+                <td mat-cell *matCellDef="let element"> {{ element.numero }} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="fecha">
+                <th mat-header-cell *matHeaderCellDef> Fecha </th>
+                <td mat-cell *matCellDef="let element"> {{ element.fecha }} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="total">
+                <th mat-header-cell *matHeaderCellDef> Total </th>
+                <td mat-cell *matCellDef="let element"> {{ element.total }} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="estado_de_pago">
+                <th mat-header-cell *matHeaderCellDef> Pago </th>
+                <td mat-cell *matCellDef="let element"> {{ element.estado_de_pago }} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="id_pedido">
+                <th mat-header-cell *matHeaderCellDef> Ped </th>
+                <td mat-cell *matCellDef="let element"> {{ element.id_pedido }} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="id_cliente">
+                <th mat-header-cell *matHeaderCellDef> Cliente </th>
+                <td mat-cell *matCellDef="let element"> {{ element.id_cliente }} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
     </div>
 </div>

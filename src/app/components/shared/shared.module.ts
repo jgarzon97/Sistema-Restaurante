@@ -70,6 +70,6 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     FormsModule,
     MatTooltipModule,
     MatAutocompleteModule
-  ]
+  ],
 })
 export class SharedModule { }

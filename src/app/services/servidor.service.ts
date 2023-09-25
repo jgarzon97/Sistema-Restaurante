@@ -54,4 +54,8 @@ export class ServidorService {
   getClientes(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/clientes`);
   }
+
+  getFactura(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/facturas`);
+  }
 }
