@@ -1,3 +1,4 @@
+import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTable } from '@angular/material/table';
@@ -7,8 +8,20 @@ import { PedidosServiceService } from 'src/app/services/pedidos.service.service'
 @Component({
   selector: 'app-pedidos',
   templateUrl: './pedidos.component.html',
-  styleUrls: ['./pedidos.component.css']
+  styleUrls: ['./pedidos.component.css'],
+  animations: [
+    trigger('fadeInOut', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('1s', style({ opacity: 1 })),
+      ]),
+      transition(':leave', [
+        animate('1s', style({ opacity: 0 })),
+      ]),
+    ]),
+  ],
 })
+
 export class PedidosComponent {
   displayedColumns: string[] = ['id_pedido', 'fecha', 'hora', 'id_usuario', 'id_mesa', 'estado', 'acciones'];
   dataSource: any[] = [];
