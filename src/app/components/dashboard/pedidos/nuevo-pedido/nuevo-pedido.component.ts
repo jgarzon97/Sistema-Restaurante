@@ -35,7 +35,7 @@ export class NuevoPedidoComponent {
       this.servidorService.crearPedido(pedidoData).subscribe(
         (response) => {
           console.log('Respuesta del servidor:', response);
-          this.router.navigate(['/dashboard/pedido']);
+          this.router.navigate(['/dashboard/pedidos']);
           this.mostrarSnackbarExito(`El Pedido ha sido ingresado correctamente.`);
           this.actualizarListaMesas(); // Actualiza la lista de mesas después de agregar un pedido
         },

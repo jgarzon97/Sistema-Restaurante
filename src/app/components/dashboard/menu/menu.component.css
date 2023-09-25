@@ -1,3 +1,10 @@
+
+.mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+    padding: 0%;
+}
+
 table {
     width: 100%;
 }
@@ -7,17 +14,24 @@ th {
     font-weight: bold;
 }
 
+.mat-sort-header {
+    align-items: center;
+}
+
 .mat-column-id_producto {
     border-right: 1px solid currentColor;
-    text-align: center;
 }
 
 .mat-header-cell {
     text-align: center;
 }
 
-.mat-column-nombre {
+.mat-column-id_producto {
     text-align: center;
+}
+
+.mat-column-nombre {
+    text-align: left;
 }
 
 .mat-column-precio {
@@ -28,7 +42,7 @@ th {
     text-align: center;
 }
 
-.mat-column-id_categoria {
+.mat-column-nombre_categoria {
     text-align: center;
 }
 
@@ -41,7 +55,7 @@ th {
 }
 
 .mat-mdc-form-field {
-    padding-top: 10px;
+    padding-top: 5px;
     font-size: 14px;
     width: 100%;
 }
@@ -52,6 +66,7 @@ th {
     border: none;
     padding: 5px 10px;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .red-button {
@@ -60,4 +75,5 @@ th {
     border: none;
     padding: 5px 10px;
     border-radius: 5px;
+    cursor: pointer;
 }

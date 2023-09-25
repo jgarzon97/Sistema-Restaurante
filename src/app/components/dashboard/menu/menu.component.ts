@@ -12,7 +12,7 @@ import { ServidorService } from 'src/app/services/servidor.service';
 })
 export class MenuComponent {
 
-  displayedColumns: string[] = ['id_producto', 'nombre', 'precio', 'estado', 'id_categoria', 'acciones'];
+  displayedColumns: string[] = ['id_producto', 'nombre', 'precio', 'estado', 'nombre_categoria', 'acciones'];
   dataSource: MatTableDataSource<any> = new MatTableDataSource<any>([]);
 
   constructor(private snackBar: MatSnackBar, private servidor: ServidorService) {}

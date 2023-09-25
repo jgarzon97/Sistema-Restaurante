@@ -62,13 +62,13 @@ export class DetallePedidoComponent {
   }
 
   buscarProducto() {
-    const productoIdString = this.formData.id_producto; // Asumiendo que esto es una cadena
-    const productoId = parseInt(productoIdString, 10); // Convierte la cadena a un número entero (base 10)
+    const productoIdString = this.formData.id_producto;
+    const productoId = parseInt(productoIdString, 10);
   
-    if (!isNaN(productoId)) { // Verifica si la conversión fue exitosa
+    if (!isNaN(productoId)) {
       this.servidorService.getProducto(productoId).subscribe(
         (producto) => {
-          // Aquí puedes asignar otros valores del producto a formData si es necesario
+          
         },
         (error) => {
           console.error('Error al obtener el producto:', error);

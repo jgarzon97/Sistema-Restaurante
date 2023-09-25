@@ -1,0 +1,55 @@
+
+th {
+    text-align: center;
+    font-weight: bold;
+}
+
+.mat-column-id_usuario {
+    text-align: center;
+}
+
+.mat-column-user_usuario {
+    text-align: center;
+
+}
+
+.mat-column-nombre_user {
+    text-align: center;
+}
+
+.mat-column-apellido_user {
+    text-align: center;
+}
+
+.mat-column-tipo_rol {
+    text-align: center;
+}
+
+.mat-column-estado {
+    text-align: center;
+}
+
+.custom-content {
+    border: 1px solid #ccc;
+    padding: 5px;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+.green-button {
+    background-color: rgb(35, 202, 35);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.red-button {
+    background-color: rgb(217, 45, 45);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
