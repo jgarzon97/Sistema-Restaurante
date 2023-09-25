@@ -1,11 +1,12 @@
 <div class="container mat-elevation-z5">
     <mat-toolbar>
-        <span>REGISTROS DE FACTURAS</span>
+        <span>LISTADO DE LAS FACTURAS</span>
+        <div class="example-spacer"></div>
+        <button mat-raised-button color="primary" routerLink="/dashboard/factura">AGREGAR</button>
     </mat-toolbar>
 
     <div style="margin-top: 10px;">
         <table mat-table [dataSource]="dataSource" matSort>
-
             <ng-container matColumnDef="id_factura">
                 <th mat-header-cell *matHeaderCellDef> No. </th>
                 <td mat-cell *matCellDef="let element"> {{ element.id_factura }} </td>
@@ -28,11 +29,15 @@
 
             <ng-container matColumnDef="estado_de_pago">
                 <th mat-header-cell *matHeaderCellDef> Pago </th>
-                <td mat-cell *matCellDef="let element"> {{ element.estado_de_pago }} </td>
+                <td mat-cell *matCellDef="let element">
+                    <button [ngClass]="element.estado_de_pago === 'Cancelado' ? 'green-button' : 'red-button'">
+                        {{ element.estado_de_pago }}
+                    </button>
+                </td>
             </ng-container>
 
             <ng-container matColumnDef="id_pedido">
-                <th mat-header-cell *matHeaderCellDef> Ped </th>
+                <th mat-header-cell *matHeaderCellDef> Pedido </th>
                 <td mat-cell *matCellDef="let element"> {{ element.id_pedido }} </td>
             </ng-container>
 
@@ -40,7 +45,6 @@
                 <th mat-header-cell *matHeaderCellDef> Cliente </th>
                 <td mat-cell *matCellDef="let element"> {{ element.id_cliente }} </td>
             </ng-container>
-
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>

@@ -1,0 +1,53 @@
+table {
+    width: 100%;
+}
+
+th {
+    text-align: center;
+    font-weight: bold;
+}
+
+.mat-column-id_factura {
+    border-right: 1px solid currentColor;
+    text-align: center;
+}
+
+.mat-column-numero {
+    text-align: center;
+}
+
+.mat-column-fecha {
+    text-align: center;
+}
+
+.mat-column-total {
+    text-align: center;
+}
+
+.mat-column-estado_de_pago {
+    text-align: center;
+}
+
+.mat-column-id_pedido {
+    text-align: center;
+}
+
+.mat-column-id_cliente {
+    text-align: center;
+}
+
+.green-button {
+    background-color: rgb(35, 202, 35);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.red-button {
+    background-color: rgb(217, 45, 45);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+}

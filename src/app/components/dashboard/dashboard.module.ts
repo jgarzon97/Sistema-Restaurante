@@ -13,6 +13,8 @@ import { NuevoMenuComponent } from './menu/nuevo-menu/nuevo-menu.component';
 import { NuevoPedidoComponent } from './pedidos/nuevo-pedido/nuevo-pedido.component';
 import { DetallePedidoComponent } from './pedidos/detalle-pedido/detalle-pedido.component';
 import { RolesComponent } from './roles/roles.component';
+import { ClienteComponent } from './pago/cliente/cliente.component';
+import { FacturaComponent } from './pago/factura/factura.component';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { RolesComponent } from './roles/roles.component';
     NuevoMenuComponent,
     NuevoPedidoComponent,
     DetallePedidoComponent,
-    RolesComponent
+    RolesComponent,
+    ClienteComponent,
+    FacturaComponent
   ],
   imports: [
     CommonModule,

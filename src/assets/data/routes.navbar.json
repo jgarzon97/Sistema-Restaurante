@@ -1,22 +1,22 @@
 [
     {
-        "nombre": "Inicio",
+        "nombre": "INICIO",
         "redirect": "/dashboard/inicio"
     },
     {
-        "nombre": "Pedidos",
+        "nombre": "PEDIDOS",
         "redirect": "/dashboard/pedidos"
     },
     {
-        "nombre": "Menu",
+        "nombre": "PRODUCTOS",
         "redirect": "/dashboard/menu"
     },
     {
-        "nombre": "Roles",
+        "nombre": "ROLES",
         "redirect": "/dashboard/roles"
     },
     {
-        "nombre": "Pago",
+        "nombre": "PAGO",
         "redirect": "/dashboard/pago"
     }
 ]

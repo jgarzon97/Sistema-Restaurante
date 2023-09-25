@@ -9,6 +9,8 @@ import { NuevoMenuComponent } from './menu/nuevo-menu/nuevo-menu.component';
 import { NuevoPedidoComponent } from './pedidos/nuevo-pedido/nuevo-pedido.component';
 import { DetallePedidoComponent } from './pedidos/detalle-pedido/detalle-pedido.component';
 import { RolesComponent } from './roles/roles.component';
+import { ClienteComponent } from './pago/cliente/cliente.component';
+import { FacturaComponent } from './pago/factura/factura.component';
 
 
 const routes: Routes = [
@@ -21,7 +23,9 @@ const routes: Routes = [
       { path: 'nuevo-menu', component: NuevoMenuComponent },
       { path: 'nuevo-pedido', component: NuevoPedidoComponent },
       { path: 'detalle-pedido/:id_pedido', component: DetallePedidoComponent },
-      { path: 'roles', component: RolesComponent }
+      { path: 'roles', component: RolesComponent },
+      { path: 'factura', component: FacturaComponent },
+      { path: 'cliente', component: ClienteComponent }
     ]
   }
 ];

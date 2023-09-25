@@ -1,0 +1,57 @@
+<div class="container mat-elevation-z5">
+    <mat-toolbar>
+        <span>DATOS DEL CLIENTE</span>
+    </mat-toolbar>
+    <div class="container-clientes">
+        <form (ngSubmit)="submitForm()">
+            <div class="container-form">
+                <mat-form-field appearance="fill">
+                    <mat-label>Cédula</mat-label>
+                    <input matInput placeholder (keypress)="onCedulaKeyPress($event)" [(ngModel)]="formulario.cedula" id="cedula" name="cedula">
+                    <mat-icon matSuffix>badge</mat-icon>
+                </mat-form-field>
+            </div>
+
+            <div class="container-form">
+                <mat-form-field>
+                    <mat-label>Correo electrónico</mat-label>
+                    <input matInput placeholder="example@example.com" [formControl]="email" required [(ngModel)]="formulario.email" id="email" name="email">
+                    <mat-icon matSuffix>email</mat-icon>
+                    <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="container-form">
+                <mat-form-field appearance="fill">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput placeholder [(ngModel)]="formulario.nombre" id="nombre" name="nombre">
+                    <mat-icon matSuffix>account_circle</mat-icon>
+                </mat-form-field>
+            </div>
+
+            <div class="container-form">
+                <mat-form-field appearance="fill">
+                    <mat-label>Apellido</mat-label>
+                    <input matInput placeholder [(ngModel)]="formulario.apellido" id="apellido" name="apellido">
+                    <mat-icon matSuffix>account_circle</mat-icon>
+                </mat-form-field>
+            </div>
+
+            <div class="container-form">
+                <mat-form-field appearance="fill">
+                    <mat-label>Dirección</mat-label>
+                    <input matInput placeholder [(ngModel)]="formulario.direccion" id="direccion" name="direccion">
+                    <mat-icon matSuffix>home_pin</mat-icon>
+                </mat-form-field>
+            </div>
+
+            <div class="container-form">
+                <mat-form-field appearance="fill">
+                    <mat-label>Teléfono</mat-label>
+                    <input matInput placeholder (keypress)="onCedulaKeyPress($event)" [(ngModel)]="formulario.telefono" id="telefono" name="telefono">
+                    <mat-icon matSuffix>phone_number</mat-icon>
+                </mat-form-field>
+            </div>
+        </form>
+    </div>
+</div>
