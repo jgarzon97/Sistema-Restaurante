@@ -19,11 +19,17 @@ export class NuevoPedidoComponent {
     id_mesa: ''
   };
 
+
   constructor(private servidorService: ServidorService, private _snackBar: MatSnackBar, private router: Router, private http: HttpClient, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
+    const idUsuarioLocalStorage = localStorage.getItem('id');
+    if (idUsuarioLocalStorage) {
+      this.formData.id_usuario = idUsuarioLocalStorage;
+    }
     this.actualizarListaMesas();
-  }
+}
+
 
   submitForm() {
     if (this.formData.id_mesa) {
@@ -35,9 +41,8 @@ export class NuevoPedidoComponent {
       this.servidorService.crearPedido(pedidoData).subscribe(
         (response) => {
           console.log('Respuesta del servidor:', response);
-          this.router.navigate(['/dashboard/pedidos']);
           this.mostrarSnackbarExito(`El Pedido ha sido ingresado correctamente.`);
-          this.actualizarListaMesas(); // Actualiza la lista de mesas después de agregar un pedido
+          this.actualizarListaMesas();
         },
         (error) => {
           console.error('Error al enviar el pedido:', error);

@@ -12,7 +12,7 @@ export class PagosService {
 
   constructor(private http: HttpClient) { }
 
-  crearteFactura(facturaData: any): Observable<any> {
+  createFactura(facturaData: any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/factura`, facturaData);
   }
 
@@ -20,7 +20,15 @@ export class PagosService {
     return this.http.get<any[]>(`${this.apiUrl}/facturas`);
   }
 
+  getFactura(id: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/factura/${id}`);
+  }
+
   updateFactura(id: number, facturaData: any): Observable<any> {
     return this.http.put<any>(`${this.apiUrl}/factura/${id}`, facturaData);
+  }
+
+  createCliente(clientData: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/cliente`, clientData);
   }
 }

@@ -1,4 +1,4 @@
-<div class="[@fadeInOut] container mat-elevation-z5">
+<div class="[@fadeInOut] container mat-elevation-z5 [@fadeInOut]">
     <mat-toolbar>
         <span>MESAS DISPONIBLES</span>
         <div class="example-spacer"></div>
@@ -47,10 +47,10 @@
             <ng-container matColumnDef="acciones">
                 <th mat-header-cell *matHeaderCellDef> Acciones </th>
                 <td mat-cell *matCellDef="let element">
-                    <button mat-button matTooltip="Editar">
+                    <button mat-button matTooltip="Editar" [disabled]="element.estado !== 'Disponible'">
                         <mat-icon>tune</mat-icon>
                     </button>
-                    <button mat-button matTooltip="Eliminar">
+                    <button mat-button matTooltip="Eliminar" [disabled]="element.estado !== 'Disponible'">
                         <mat-icon>delete</mat-icon>
                     </button>
                 </td>

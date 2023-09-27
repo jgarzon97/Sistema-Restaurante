@@ -1,11 +1,11 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { Observable, map, startWith } from 'rxjs';
+import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { PedidosServiceService } from 'src/app/services/pedidos.service.service';
-import { ServidorService } from 'src/app/services/servidor.service';
-
+import { ProductosService } from 'src/app/services/productos.service';
 
 @Component({
   selector: 'app-detalle-pedido',
@@ -15,7 +15,13 @@ import { ServidorService } from 'src/app/services/servidor.service';
 
 export class DetallePedidoComponent {
 
-  productos: Observable<any[]> = this.servidorService.getProductos();
+  productos: Observable<any[]> = this.productosService.getProductos();
+
+  filteredOptions: Observable<string[]> | undefined;
+
+  nombresProductos: string[] = [];
+
+  myControl = new FormControl();
 
   formData = {
     id_pedido: '',
@@ -24,14 +30,20 @@ export class DetallePedidoComponent {
     detalle: ''
   };
 
-  constructor(private pedidoservidorService: PedidosServiceService, private servidorService: ServidorService, private activatedRoute: ActivatedRoute, private _snackBar: MatSnackBar) { }
+  constructor(private pedidoservidorService: PedidosServiceService, private productosService: ProductosService, private activatedRoute: ActivatedRoute, private _snackBar: MatSnackBar) { 
+    this.filteredOptions = this.myControl.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value))
+    );
+  }
 
   ngOnInit(): void {
+    this.myControl.valueChanges.subscribe((nombreProducto: string) => {
+      this.productoSeleccionado(nombreProducto);
+    });
     this.activatedRoute.params.subscribe((params) => {
       this.formData.id_pedido = params['id_pedido'];
     });
-
-    this.cargarProductos();
   }
 
   submitForm() {
@@ -55,31 +67,16 @@ export class DetallePedidoComponent {
     } else {
       this.mostrarSnackbarError('Completa todos los campos antes de enviar los detalles del pedido.');
     }
+    console.log('ID Pedido:', this.formData.id_pedido);
+    console.log('ID Producto:', this.formData.id_producto);
+    console.log('Cantidad:', this.formData.cantidad);
+    console.log('Detalle:', this.formData.detalle);
   }
 
-  cargarProductos() {
-    this.productos = this.servidorService.getProductos();
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    return this.nombresProductos.filter(option => option.toLowerCase().includes(filterValue));
   }
-
-  buscarProducto() {
-    const productoIdString = this.formData.id_producto;
-    const productoId = parseInt(productoIdString, 10);
-  
-    if (!isNaN(productoId)) {
-      this.servidorService.getProducto(productoId).subscribe(
-        (producto) => {
-          
-        },
-        (error) => {
-          console.error('Error al obtener el producto:', error);
-        }
-      );
-    } else {
-      console.error('El valor de productoId no es un número válido.');
-    }
-  }
-  
-
 
   private mostrarSnackbar(mensaje: string): void {
     this._snackBar.open(mensaje, undefined, {
@@ -94,7 +91,20 @@ export class DetallePedidoComponent {
     });
   }
 
-  displayFn(producto: any): string {
-    return producto ? producto.nombre : '';
+  productoSeleccionado(nombreProducto: string) {
+    this.myControl.valueChanges
+      .pipe(
+        debounceTime(3000), // Espera 300 milisegundos de inactividad
+        distinctUntilChanged(), // Asegura que solo se realice una búsqueda si el valor cambió
+        switchMap(nombreProducto => this.productosService.obtenerIdPorNombre(nombreProducto))
+      )
+      // Utiliza tu servicio para obtener el ID del producto por nombre
+      .subscribe((id: number) => {
+        if (id !== undefined && !isNaN(id)) {
+          this.formData.id_producto = id.toString(); // Convierte id a string
+        } else {
+          console.error('ID de producto no válido:', id);
+        }
+      });
   }
 }

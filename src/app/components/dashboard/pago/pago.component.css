@@ -32,7 +32,11 @@ th {
     text-align: center;
 }
 
-.mat-column-id_cliente {
+.mat-column-nombre {
+    text-align: center;
+}
+
+.mat-column-apellido {
     text-align: center;
 }
 

@@ -4,23 +4,10 @@
     </mat-toolbar>
     <div class="mat-elevation-z3">
         <mat-card style="margin-top: 10px;">
-            <form (ngSubmit)="submitForm()" style="margin-top: 10px;">
-                <mat-grid-list cols="4" rowHeight="70px">
-
-                    <mat-grid-tile [colspan]="1" [rowspan]="1">
-                        <mat-form-field class="ancho">
-                            <mat-label>Usuario</mat-label>
-                            <input matInput [(ngModel)]="formData.id_usuario" id="id_usuario" name="id_usuario">
-                        </mat-form-field>
-                    </mat-grid-tile>
-
-                    <mat-grid-tile [colspan]="3" [rowspan]="5">
-                        <img src="./assets/img/facturacion.png" width="400" height="400">
-                    </mat-grid-tile>
-
-
+            <form (ngSubmit)="submitForm()" style="margin-top: 20px;">
+                <mat-grid-list cols="5" rowHeight="70px">
                     <!-- Selecciona una mesa de la lista de Mesas disponibles. -->
-                    <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-grid-tile [colspan]="1" [rowspan]="2">
                         <mat-form-field>
                             <mat-label>Selecciona una mesa</mat-label>
                             <mat-select [(ngModel)]="formData.id_mesa" id="id_mesa" name="id_mesa">
@@ -32,7 +19,7 @@
                     </mat-grid-tile>
 
                     <mat-grid-tile [colspan]="2" [rowspan]="1">
-                        <button mat-raised-button color="primary" type="submit">Aceptar</button>
+                        <button mat-raised-button color="primary" type="submit">Aperturar</button>
                     </mat-grid-tile>
 
                     <mat-grid-tile [colspan]="2" [rowspan]="1">

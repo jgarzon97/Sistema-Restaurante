@@ -15,6 +15,10 @@ export class LoginServiceService {
   getUsuario(id: number): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/usuario/${id}`);
   }
+  // Obtener nombres de usuarios
+  getUsuarioRoles(): Observable<number[]> {
+    return this.http.get<number[]>(`${this.apiUrl}/usuarioRoles`);
+  }
 
   // Obtener nombres de usuarios
   getUsuarioNombres(): Observable<string[]> {
@@ -35,9 +39,5 @@ export class LoginServiceService {
   authUsuario(user_usuario: string, pass_usuario: string): Observable<any> {
     const body = { user_usuario, pass_usuario };
     return this.http.post(`${this.apiUrl}/auth`, body);
-  }
-
-  isAuthenticated(){
-    return false;
   }
 }

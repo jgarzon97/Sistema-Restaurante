@@ -1,1 +1,19 @@
-<p>factura works!</p>
+<div class="container mat-elevation-z5" [@fadeInOut]>
+    <mat-toolbar>
+        <span>CREAR FACTURA</span>
+    </mat-toolbar>
+    <div class="container-clientes">
+        <form (ngSubmit)="submitForm()">
+            <div>
+                <mat-form-field>
+                    <mat-label>Pedido</mat-label>
+                    <input matInput [(ngModel)]="formData.id_pedido" id="id_pedido" name="id_pedido" [readonly]="true">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Cliente</mat-label>
+                    <input matInput [(ngModel)]="formData.id_cliente" id="id_cliente" name="id_cliente">
+                </mat-form-field>
+            </div>
+        </form>
+    </div>
+</div>

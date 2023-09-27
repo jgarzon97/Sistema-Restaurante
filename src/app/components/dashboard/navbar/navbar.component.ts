@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Rutas } from 'src/app/interfaces/rutas';
-import { RutasService } from 'src/app/services/rutas.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,17 +7,17 @@ import { RutasService } from 'src/app/services/rutas.service';
 })
 
 export class NavbarComponent implements OnInit {
-  rutas: Rutas[] = [];
+  rol:string='';
 
-  constructor(private _rutasService : RutasService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.cargarRutas();
-  }
+    const rolActual = localStorage.getItem('rol');
 
-  cargarRutas() {
-    this._rutasService.RoutesAdmin().subscribe(data => {
-      this.rutas = data;
-    });
+    if(rolActual!==null){
+      this.rol=rolActual;
+    }else{
+      this.rol='';
+    }
   }
 }

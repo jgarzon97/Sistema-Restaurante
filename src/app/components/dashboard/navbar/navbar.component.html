@@ -1,11 +1,29 @@
-<mat-toolbar color="primary" style="margin-bottom: 20px;">
-    <span>
+<mat-toolbar color="primary">
+    <mat-toolbar-row color="primary">
         <mat-icon matSuffix>point_of_sale</mat-icon>
-    </span>
-    <span class="example-spacer"></span>
-    <button mat-button *ngFor="let item of rutas" [routerLink]="item.redirect">{{ item.nombre }}</button>
-    <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon favorite-icon" routerLink="/">
-        <mat-icon>logout</mat-icon>
-    </button>
+        <span class="example-spacer"></span>
+        <button mat-button [routerLink]="'/dashboard/inicio'">
+            INICIO
+        </button>
+        <span class="example-spacer"></span>
+        <button mat-button *ngIf=" rol === '1' || rol === '2' " [routerLink]="'/dashboard/pedidos'">
+            PEDIDOS
+        </button>
+        <span class="example-spacer"></span>
+        <button mat-button *ngIf=" rol === '1' || rol === '2' " [routerLink]="'/dashboard/menu'">
+            MENU
+        </button>
+        <span class="example-spacer"></span>
+        <button mat-button *ngIf=" rol === '1' || rol === '2' " [routerLink]="'/dashboard/pago'">
+            FACTURACION
+        </button>
+        <span class="example-spacer"></span>
+        <button mat-button *ngIf=" rol === '1' " [routerLink]="'/dashboard/roles'">
+            ROLES
+        </button>
+        <span class="example-spacer"></span>
+        <button mat-icon-button class="example-icon favorite-icon" routerLink="/">
+            <mat-icon>logout</mat-icon>
+        </button>
+    </mat-toolbar-row>
 </mat-toolbar>

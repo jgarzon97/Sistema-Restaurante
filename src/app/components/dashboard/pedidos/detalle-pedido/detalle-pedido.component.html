@@ -1,60 +1,54 @@
-<div class="container mat-elevation-z3">
+<div class="container mat-elevation-z5">
     <mat-toolbar>
         <span>DETALLES DEL PEDIDO</span>
     </mat-toolbar>
-    <div class="mat-elevation-z3">
-        <mat-card style="margin-top: 10px;">
-            <form (ngSubmit)="submitForm()" style="margin-top: 10px;">
-                <mat-grid-list cols="4" rowHeight="70px">
+    <div class="container-detalles">
+        <form (ngSubmit)="submitForm()">
 
-                    <mat-grid-tile [colspan]="1" [rowspan]="1">
-                        <mat-form-field>
-                            <mat-label>Pedido</mat-label>
-                            <input matInput [(ngModel)]="formData.id_pedido" id="id_pedido" name="id_pedido"
-                                [readonly]="true">
-                        </mat-form-field>
-                    </mat-grid-tile>
+            <div>
+                <mat-form-field>
+                    <mat-label>Pedido</mat-label>
+                    <input matInput [(ngModel)]="formData.id_pedido" id="id_pedido" name="id_pedido" [readonly]="true">
+                </mat-form-field>
+            </div>
 
-                    <mat-grid-tile [colspan]="3" [rowspan]="5">
-                        <img src="./assets/img/facturacion.png" width="400" height="400">
-                    </mat-grid-tile>
+            <div>
+                <mat-form-field>
+                    <mat-label>Producto</mat-label>
+                    <input type="text"
+                        matInput
+                        [formControl]="myControl"
+                        [matAutocomplete]="auto">
+                    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                            {{ option }}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+            </div>
 
-                    <mat-grid-tile [colspan]="1" [rowspan]="1">
-                        <mat-form-field>
-                            <mat-label>Producto</mat-label>
-                            <input matInput [(ngModel)]="formData.id_producto" id="id_producto" name="id_producto"
-                                [matAutocomplete]="auto" (blur)="cargarProductos()">
-                            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-                                <mat-option *ngFor="let producto of productos | async" [value]="producto.id">{{
-                                    producto.nombre }}</mat-option>
-                            </mat-autocomplete>
-                        </mat-form-field>
-                    </mat-grid-tile>
+            <div>
+                <mat-form-field>
+                    <mat-label>Cantidad</mat-label>
+                    <input matInput [(ngModel)]="formData.cantidad" id="cantidad" name="cantidad">
+                </mat-form-field>
+            </div>
 
+            <div>
+                <mat-form-field>
+                    <mat-label>Detalles</mat-label>
+                    <textarea matInput [(ngModel)]="formData.detalle" id="detalle" name="detalle"></textarea>
+                </mat-form-field>
+            </div>
 
-                    <mat-grid-tile [colspan]="1" [rowspan]="1">
-                        <mat-form-field>
-                            <mat-label>Cantidad</mat-label>
-                            <input matInput [(ngModel)]="formData.cantidad" id="cantidad" name="cantidad">
-                        </mat-form-field>
-                    </mat-grid-tile>
+            <div class="button-container">
+                <button mat-raised-button color="primary" type="submit" class="custom-button">Aceptar</button>
+            </div>
+            <div class="button-container">
+                <button mat-raised-button type="button" routerLink="/dashboard/pedidos"
+                    class="custom-button">Volver</button>
+            </div>
 
-                    <mat-grid-tile [colspan]="1" [rowspan]="1">
-                        <mat-form-field>
-                            <mat-label>Detalles</mat-label>
-                            <input matInput [(ngModel)]="formData.detalle" id="detalle" name="detalle">
-                        </mat-form-field>
-                    </mat-grid-tile>
-
-                    <mat-grid-tile [colspan]="2" [rowspan]="1">
-                        <button mat-raised-button color="primary" type="submit">Aceptar</button>
-                    </mat-grid-tile>
-
-                    <mat-grid-tile [colspan]="2" [rowspan]="1">
-                        <button mat-raised-button type="button" routerLink="/dashboard/pedidos">Volver</button>
-                    </mat-grid-tile>
-                </mat-grid-list>
-            </form>
-        </mat-card>
+        </form>
     </div>
 </div>

@@ -64,6 +64,10 @@ export class PedidosComponent {
     });
   }
 
+  verFactura(id_pedido: string): void {
+    this.router.navigate(['/dashboard/factura', id_pedido]);
+  }
+
   verDetallePedido(id_pedido: string): void {
     this.router.navigate(['/dashboard/detalle-pedido', id_pedido]);
   }

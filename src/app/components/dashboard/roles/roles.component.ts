@@ -1,7 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { UsuariosService } from 'src/app/services/usuarios.service';
+import { LoginServiceService } from 'src/app/services/login.service.service';
 
 @Component({
   selector: 'app-roles',
@@ -22,9 +21,9 @@ import { UsuariosService } from 'src/app/services/usuarios.service';
 export class RolesComponent {
 
   displayedColumns: string[] = ['id_usuario', 'user_usuario', 'nombre_user', 'apellido_user', 'tipo_rol', 'estado'];
-  dataSource: any[] = [];
+  dataSource!: any[];
 
-  constructor(private snackBar: MatSnackBar, private usuarios: UsuariosService) { }
+  constructor(private usuarios: LoginServiceService) { }
 
   ngOnInit(): void {
     this.usuarios.getUsuarios().subscribe(data => {

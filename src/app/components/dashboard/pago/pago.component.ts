@@ -20,7 +20,7 @@ import { PagosService } from 'src/app/services/pagos.service';
 })
 export class PagoComponent {
 
-  displayedColumns: string[] = ['id_factura', 'numero', 'fecha', 'total', 'estado_de_pago', 'id_pedido', 'id_cliente'];
+  displayedColumns: string[] = ['id_factura', 'fecha', 'total', 'estado_de_pago', 'id_pedido', 'nombre', 'apellido'];
   dataSource: any[] = [];
 
   constructor(private servidor: PagosService) {}

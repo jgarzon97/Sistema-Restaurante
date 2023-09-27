@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoginServiceService } from 'src/app/services/login.service.service';
+import axios from 'axios';
 
 @Component({
   selector: 'app-login',
@@ -21,58 +22,39 @@ export class LoginComponent {
     })
   }
 
-  ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
-      const id = params.get('id');
-      if (id) {
-        console.log('Valor de id:', id);
-      }
-    });
-  }
+  Ingresar() {
+    if (this.form.valid) {
+      const user_usuario = this.form.value.usuario;
+      const pass_usuario = this.form.value.password;
+  
+      const url = 'http://localhost:3000/iniciarSesion';
+      const datosIngreso = {
+        user_usuario: user_usuario,
+        pass_usuario: pass_usuario
+      };
 
-  ingresar() {
-    if (this.form.invalid) {
-      return;
+      axios.post(url, datosIngreso)
+        .then((response) => {
+          // Verifica si el estado es "Activo"
+          if (response.data.estado === 'Activo') {
+            // Autenticación exitosa, maneja la respuesta y almacena en el local storage
+            localStorage.setItem('rol', response.data.id_rol);
+            localStorage.setItem('id', response.data.id_usuario);
+            localStorage.setItem('estado', response.data.estado);
+            this.fakeloading();
+            console.log('Ingreso exitoso');
+          } else {
+            // El usuario no está "Activo", muestra un mensaje de error y reinicia el formulario
+            this.inactivo();
+            this.form.reset();
+          }
+        })
+        .catch((error) => {
+          // Maneja el error, muestra un mensaje de error y reinicia el formulario
+          this.error();
+          this.form.reset();
+        });
     }
-
-    const usuario = this.form.value.usuario;
-    const password = this.form.value.password;
-
-    this.loading = true;
-    this.loginService.authUsuario(usuario, password).subscribe(
-      (response) => {
-        console.log(response);
-        this.loading = false;
-        this.mostrarMensajeBienvenida(response.rol, response.nombre);
-        // Navegar a la página de Dashboard con el ID de usuario
-        //const idUsuario = response.id;
-        this.fakeloading()
-      },
-      (error) => {
-        console.error(error);
-        this.loading = false;
-        this.mostrarError();
-        this.form.reset();
-      }
-    );
-  }
-
-  mostrarMensajeBienvenida(rol: string, nombre: string) {
-    let mensajeBienvenida = '';
-
-    if (rol === '1') {
-      mensajeBienvenida = `Bienvenido Administrador, ${nombre}`;
-    } else if (rol === '2') {
-      mensajeBienvenida = `Bienvenido Camarero, ${nombre}`;
-    }
-  }
-
-  mostrarError() {
-    this._snackBar.open('Error al autenticar', undefined, {
-      duration: 1500,
-      horizontalPosition: 'center',
-      verticalPosition: 'bottom'
-    });
   }
 
   error() {
@@ -83,10 +65,19 @@ export class LoginComponent {
     })
   }
 
+  inactivo() {
+    this._snackBar.open('El usuario no se encuentra Activado', '', {
+      duration: 1500,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom'
+    })
+  }
+
   fakeloading() {
+    // Creara una pantalla de carga
     this.loading = true;
     setTimeout(() => {
-      this.router.navigate(['/dashboard/inicio']);
+      this.router.navigate(['/dashboard/']);
     }, 1500);
   }
 }

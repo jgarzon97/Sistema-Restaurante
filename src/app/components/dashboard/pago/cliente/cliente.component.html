@@ -1,30 +1,38 @@
-<div class="container mat-elevation-z5">
+<div class="container mat-elevation-z5" [@fadeInOut]>
     <mat-toolbar>
         <span>DATOS DEL CLIENTE</span>
     </mat-toolbar>
     <div class="container-clientes">
-        <form (ngSubmit)="submitForm()">
+        <form [formGroup]="cliente" (ngSubmit)="onSubmit()">
             <div class="container-form">
                 <mat-form-field appearance="fill">
                     <mat-label>Cédula</mat-label>
-                    <input matInput placeholder (keypress)="onCedulaKeyPress($event)" [(ngModel)]="formulario.cedula" id="cedula" name="cedula">
+                    <input matInput placeholder = "1234567890"
+                        (keypress)="onCedulaKeyPress($event)"
+                        formControlName="cedula"
+                        id="cedula"
+                        name="cedula">
                     <mat-icon matSuffix>badge</mat-icon>
+                    <mat-error *ngIf="getErrorMessage('cedula')">{{ getErrorMessage('email') }}</mat-error>
                 </mat-form-field>
             </div>
 
             <div class="container-form">
                 <mat-form-field>
                     <mat-label>Correo electrónico</mat-label>
-                    <input matInput placeholder="example@example.com" [formControl]="email" required [(ngModel)]="formulario.email" id="email" name="email">
+                    <input matInput placeholder = "example@example.com"
+                        formControlName="email"
+                        id="email"
+                        name="email">
                     <mat-icon matSuffix>email</mat-icon>
-                    <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
+                    <mat-error *ngIf="getErrorMessage('email')">{{ getErrorMessage('email') }}</mat-error>
                 </mat-form-field>
             </div>
 
             <div class="container-form">
                 <mat-form-field appearance="fill">
                     <mat-label>Nombre</mat-label>
-                    <input matInput placeholder [(ngModel)]="formulario.nombre" id="nombre" name="nombre">
+                    <input matInput placeholder formControlName="nombre" id="nombre" name="nombre">
                     <mat-icon matSuffix>account_circle</mat-icon>
                 </mat-form-field>
             </div>
@@ -32,7 +40,7 @@
             <div class="container-form">
                 <mat-form-field appearance="fill">
                     <mat-label>Apellido</mat-label>
-                    <input matInput placeholder [(ngModel)]="formulario.apellido" id="apellido" name="apellido">
+                    <input matInput placeholder formControlName="apellido" id="apellido" name="apellido">
                     <mat-icon matSuffix>account_circle</mat-icon>
                 </mat-form-field>
             </div>
@@ -40,7 +48,7 @@
             <div class="container-form">
                 <mat-form-field appearance="fill">
                     <mat-label>Dirección</mat-label>
-                    <input matInput placeholder [(ngModel)]="formulario.direccion" id="direccion" name="direccion">
+                    <input matInput placeholder formControlName="direccion" id="direccion" name="direccion">
                     <mat-icon matSuffix>home_pin</mat-icon>
                 </mat-form-field>
             </div>
@@ -48,10 +56,22 @@
             <div class="container-form">
                 <mat-form-field appearance="fill">
                     <mat-label>Teléfono</mat-label>
-                    <input matInput placeholder (keypress)="onCedulaKeyPress($event)" [(ngModel)]="formulario.telefono" id="telefono" name="telefono">
+                    <span matPrefix>+593 &nbsp;</span>
+                    <input matInput placeholder = "0123456789"
+                        (keypress)="onCedulaKeyPress($event)"
+                        formControlName="telefono"
+                        id="telefono"
+                        name="telefono">
                     <mat-icon matSuffix>phone_number</mat-icon>
+                    <mat-error *ngIf="getErrorMessage('telefono')">{{ getErrorMessage('telefono') }}</mat-error>
                 </mat-form-field>
             </div>
+
+            <div class="container-form">
+                <button *ngIf="activo==true" type="submit" class="btn btn-outline-danger btn-block">Registrar</button>
+                <button *ngIf="activo==false" type="submit" class="btn btn-outline-success btn-block">Modificar</button>
+            </div>
+
         </form>
     </div>
 </div>

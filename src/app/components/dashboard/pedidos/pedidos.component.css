@@ -53,6 +53,7 @@ th {
     border: none;
     padding: 5px 10px;
     border-radius: 5px;
+    cursor: default;
 }
 
 .red-button {
@@ -61,4 +62,10 @@ th {
     border: none;
     padding: 5px 10px;
     border-radius: 5px;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: inherit; /* Mantener el color original del texto */
 }
