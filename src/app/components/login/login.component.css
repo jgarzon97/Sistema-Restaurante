@@ -4,18 +4,35 @@
     height: 100%;
     align-items: center;
     background: #4568DC;
-    /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #B06AB3, #4568DC);
-    /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #B06AB3, #4568DC);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     height: 100%;
+}
+
+.rounded-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    overflow: hidden;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 20px;
+}
+
+.rounded-image {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
 }
 
 .login {
     width: 100%;
     max-width: 300px;
     text-align: center;
+    border: 2px solid rgb(129, 21, 201);
+    padding: 20px;
+    border-radius: 5%;
 }
 
 .ancho {

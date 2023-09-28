@@ -19,13 +19,14 @@ const routes: Routes = [
       { path: 'inicio', component: InicioComponent },
       { path: 'mesas/:id_mesa', component: InicioComponent },
       { path: 'pedidos', component: PedidosComponent },
-      { path: 'menu', component: MenuComponent },
-      { path: 'pago', component: PagoComponent },
-      { path: 'factura/:id_pedido', component: FacturaComponent },
-      { path: 'nuevo-menu', component: NuevoMenuComponent },
       { path: 'nuevo-pedido', component: NuevoPedidoComponent },
       { path: 'detalle-pedido/:id_pedido', component: DetallePedidoComponent },
+      { path: 'menu', component: MenuComponent },
+      { path: 'nuevo-menu', component: NuevoMenuComponent },
+      { path: 'pago', component: PagoComponent },
+      { path: 'factura/:id_pedido', component: FacturaComponent },
       { path: 'roles', component: RolesComponent },
+      { path: 'roles/nuevo-usuario', component: RolesComponent },
       { path: 'factura', component: FacturaComponent },
       { path: 'cliente', component: ClienteComponent }
     ]
