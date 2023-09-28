@@ -2,8 +2,8 @@
     <div class="login">
         <mat-spinner *ngIf="loading" class="spinner" diameter="50"></mat-spinner>
         <form *ngIf="!loading" [formGroup]="form" (ngSubmit)="Ingresar()">
-            <img src="./assets/img/facturacion.png" width="50% ">
-            <h1>Login</h1>
+            <img src="./assets/img/logo-delicias.png" width="70% ">
+            <h1>LOGIN</h1>
             <mat-form-field>
                 <mat-label class="ancho">Usuario</mat-label>
                 <input type="text" matInput autocomplete="off" formControlName="usuario">

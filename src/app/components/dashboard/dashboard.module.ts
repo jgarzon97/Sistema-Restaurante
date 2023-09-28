@@ -16,6 +16,7 @@ import { ClienteComponent } from './pago/cliente/cliente.component';
 import { FacturaComponent } from './pago/factura/factura.component';
 import { MesasComponent } from './inicio/mesas/mesas.component';
 import { RolesComponent } from './roles/roles.component';
+import { NuevoUsuarioComponent } from './roles/nuevo-usuario/nuevo-usuario.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { RolesComponent } from './roles/roles.component';
     ClienteComponent,
     FacturaComponent,
     MesasComponent,
-    RolesComponent
+    RolesComponent,
+    NuevoUsuarioComponent
   ],
   imports: [
     CommonModule,
