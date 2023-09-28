@@ -22,10 +22,13 @@ import { LoginServiceService } from 'src/app/services/login.service.service';
   ],
 })
 export class NuevoUsuarioComponent {
-  displayedColumns: string[] = ['user_usuario', 'pass_usuario', 'nombre_user', 'apellido_user', 'id_rol', 'estado'];
-  dataSource: any[] = [];
 
-  @ViewChild(MatTable) table!: MatTable<any>;
+  formData = {
+    id_pedido: '',
+    id_producto: '',
+    cantidad: '',
+    detalle: ''
+  };
 
   constructor() { }
 

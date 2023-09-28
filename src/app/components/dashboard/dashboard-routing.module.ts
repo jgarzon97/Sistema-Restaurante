@@ -11,6 +11,7 @@ import { DetallePedidoComponent } from './pedidos/detalle-pedido/detalle-pedido.
 import { RolesComponent } from './roles/roles.component';
 import { ClienteComponent } from './pago/cliente/cliente.component';
 import { FacturaComponent } from './pago/factura/factura.component';
+import { NuevoUsuarioComponent } from './roles/nuevo-usuario/nuevo-usuario.component';
 
 
 const routes: Routes = [
@@ -26,7 +27,7 @@ const routes: Routes = [
       { path: 'pago', component: PagoComponent },
       { path: 'factura/:id_pedido', component: FacturaComponent },
       { path: 'roles', component: RolesComponent },
-      { path: 'roles/nuevo-usuario', component: RolesComponent },
+      { path: 'roles/nuevo-usuario', component: NuevoUsuarioComponent },
       { path: 'factura', component: FacturaComponent },
       { path: 'cliente', component: ClienteComponent }
     ]

@@ -4,58 +4,12 @@
     </mat-toolbar>
     <div class="container-clientes">
         <form (ngSubmit)="submitForm()">
-            <div class="container-form">
-                <mat-form-field appearance="fill">
-                    <mat-label>Usuario</mat-label>
-                    <input matInput placeholder formControlName="user_usuario" id="user_usuario" name="user_usuario">
-                    <mat-icon matSuffix>account_circle</mat-icon>
+            <div>
+                <mat-form-field>
+                    <mat-label>Pedido</mat-label>
+                    <input matInput [(ngModel)]="formData.id_pedido" id="id_pedido" name="id_pedido" [readonly]="true">
                 </mat-form-field>
             </div>
-
-            <div class="container-form">
-                <mat-form-field appearance="fill">
-                    <mat-label>Contraseña</mat-label>
-                    <input matInput placeholder formControlName="pass_usuario" id="pass_usuario" name="pass_usuario">
-                    <mat-icon matSuffix>account_circle</mat-icon>
-                </mat-form-field>
-            </div>
-
-            <div class="container-form">
-                <mat-form-field appearance="fill">
-                    <mat-label>Nombre</mat-label>
-                    <input matInput placeholder formControlName="nombre_user" id="nombre_user" name="nombre_user">
-                    <mat-icon matSuffix>home_pin</mat-icon>
-                </mat-form-field>
-            </div>
-
-            <div class="container-form">
-                <mat-form-field appearance="fill">
-                    <mat-label>Apellido</mat-label>
-                    <input matInput placeholder formControlName="apellido_user" id="apellido_user" name="apellido_user">
-                    <mat-icon matSuffix>home_pin</mat-icon>
-                </mat-form-field>
-            </div>
-
-            <div class="container-form">
-                <mat-form-field appearance="fill">
-                    <mat-label>Apellido</mat-label>
-                    <input matInput placeholder formControlName="id_rol" id="id_rol" name="id_rol">
-                    <mat-icon matSuffix>home_pin</mat-icon>
-                </mat-form-field>
-            </div>
-
-            <div class="container-form">
-                <mat-form-field appearance="fill">
-                    <mat-label>Estado</mat-label>
-                    <input matInput placeholder formControlName="estado" id="estado" name="estado">
-                    <mat-icon matSuffix>home_pin</mat-icon>
-                </mat-form-field>
-            </div>
-
-            <div class="container-form">
-                <button  type="submit" class="btn btn-outline-danger btn-block">Registrar</button>
-            </div>
-
         </form>
     </div>
 </div>
