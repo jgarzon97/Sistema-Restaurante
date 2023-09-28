@@ -21,6 +21,10 @@ export class PedidosServiceService {
     return this.http.get<any>(`${this.apiUrl}/pedido/${id}`);
   }
 
+  getPedidoUsuario(id: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/usuario-pedido/${id}`);
+  }
+
   createPedido(pedidoData: any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/pedido`, pedidoData);
   }

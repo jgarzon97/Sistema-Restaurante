@@ -26,7 +26,7 @@ export class LoginComponent {
     if (this.form.valid) {
       const user_usuario = this.form.value.usuario;
       const pass_usuario = this.form.value.password;
-  
+
       const url = 'http://localhost:3000/iniciarSesion';
       const datosIngreso = {
         user_usuario: user_usuario,
@@ -37,10 +37,12 @@ export class LoginComponent {
         .then((response) => {
           // Verifica si el estado es "Activo"
           if (response.data.estado === 'Activo') {
-            // Autenticación exitosa, maneja la respuesta y almacena en el local storage
+            // Almacena en el local storage, maneja la respuesta y Autenticación exitosa
             localStorage.setItem('rol', response.data.id_rol);
             localStorage.setItem('id', response.data.id_usuario);
             localStorage.setItem('estado', response.data.estado);
+            localStorage.setItem('nombre_user', response.data.nombre_user);
+            localStorage.setItem('apellido_user', response.data.apellido_user);
             this.fakeloading();
             console.log('Ingreso exitoso');
           } else {
@@ -77,7 +79,7 @@ export class LoginComponent {
     // Creara una pantalla de carga
     this.loading = true;
     setTimeout(() => {
-      this.router.navigate(['/dashboard/']);
+      this.router.navigate(['/dashboard/inicio']);
     }, 1500);
   }
 }

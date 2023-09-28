@@ -23,7 +23,7 @@ import { PedidosServiceService } from 'src/app/services/pedidos.service.service'
 })
 
 export class PedidosComponent {
-  displayedColumns: string[] = ['id_pedido', 'fecha', 'hora', 'id_usuario', 'id_mesa', 'estado', 'acciones'];
+  displayedColumns: string[] = ['id_pedido', 'id_usuario', 'fecha', 'hora', 'id_mesa', 'estado', 'acciones'];
   dataSource: any[] = [];
 
   @ViewChild(MatTable) table!: MatTable<any>;
@@ -33,10 +33,18 @@ export class PedidosComponent {
   constructor(private servidor: PedidosServiceService, private _snackBar: MatSnackBar, private router: Router) { }
 
   ngOnInit(): void {
-    this.servidor.getPedidos().subscribe(data => {
-      console.log(data);
-      this.dataSource = data;
-    });
+    const userId = localStorage.getItem('id');
+
+    // Verificar si el userId es nulo o indefinido antes de hacer la solicitud
+    if (userId) {
+      // Llamar al servicio con el id del usuario
+      this.servidor.getPedidoUsuario(Number(userId)).subscribe(data => {
+        console.log(data);
+        this.dataSource = data;
+      });
+    } else {
+      console.error('No se encontró el userId en el localStorage');
+    }
   }
 
   borrarPedido(id: number): void {
