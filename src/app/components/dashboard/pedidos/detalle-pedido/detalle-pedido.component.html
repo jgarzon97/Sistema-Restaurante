@@ -4,14 +4,12 @@
     </mat-toolbar>
     <div class="container-detalles">
         <form (ngSubmit)="submitForm()">
-
             <div>
                 <mat-form-field>
                     <mat-label>Pedido</mat-label>
                     <input matInput [(ngModel)]="formData.id_pedido" id="id_pedido" name="id_pedido" [readonly]="true">
                 </mat-form-field>
             </div>
-
             <div>
                 <mat-form-field>
                     <mat-label>Producto</mat-label>
@@ -26,21 +24,18 @@
                     </mat-autocomplete>
                 </mat-form-field>
             </div>
-
             <div>
                 <mat-form-field>
                     <mat-label>Cantidad</mat-label>
-                    <input matInput [(ngModel)]="formData.cantidad" id="cantidad" name="cantidad">
+                    <input matInput [(ngModel)]="formData.cantidad" id="cantidad" name="cantidad" type="number">
                 </mat-form-field>
             </div>
-
             <div>
                 <mat-form-field>
                     <mat-label>Detalles</mat-label>
-                    <textarea matInput [(ngModel)]="formData.detalle" id="detalle" name="detalle"></textarea>
+                    <textarea matInput [(ngModel)]="formData.detalle" id="detalle" name="detalle" type="text"></textarea>
                 </mat-form-field>
             </div>
-
             <div class="button-container">
                 <button mat-raised-button color="primary" type="submit" class="custom-button">Aceptar</button>
             </div>
@@ -48,7 +43,6 @@
                 <button mat-raised-button type="button" routerLink="/dashboard/pedidos"
                     class="custom-button">Volver</button>
             </div>
-
         </form>
     </div>
 </div>

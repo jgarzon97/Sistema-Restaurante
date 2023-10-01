@@ -2,20 +2,23 @@
     <mat-toolbar class="mat-toolbar">
         <span>MESAS DISPONIBLES</span>
     </mat-toolbar>
-adadsdas
     <div class="container-card">
-        <div *ngFor="let mesa of mesas" [ngStyle]="{ 'background-color': getBackgroundColorByEstado(mesa.estado) }"
-            class="mesa-card">
-            <div class="mesa-numero">
-                Mesa {{ mesa.num_mesa }}
-            </div>
-            <div class="mesa-estado">
-                Estado: {{ mesa.estado }}
-            </div>
-            <div class="mesa-capacidad">
-                Capacidad: {{ mesa.capacidad }}
-            </div>
-            <a *ngIf="mesa.estado === 'Disponible'" class="disponible-link" (click)="crearPedido(userId, mesa)">Reservar</a>
+        <div *ngFor="let mesa of mesas">
+            <!-- Verifica si el estado de la mesa no está vacío antes de mostrarla -->
+            <ng-container *ngIf="mesa.estado !== null && mesa.estado.trim() !== ''">
+                <div [ngStyle]="{ 'background-color': getBackgroundColorByEstado(mesa.estado) }" class="mesa-card">
+                    <div class="mesa-numero">
+                        Mesa N° {{ mesa.num_mesa }}
+                    </div>
+                    <div class="mesa-estado">
+                        Estado: {{ mesa.estado }}
+                    </div>
+                    <div class="mesa-capacidad" *ngIf="mesa.capacidad !== null">
+                        Capacidad: {{ mesa.capacidad }}
+                    </div>
+                    <a *ngIf="mesa.estado === 'Disponible'" class="disponible-link" (click)="crearPedido(userId, mesa)">Reservar</a>
+                </div>
+            </ng-container>
         </div>
     </div>
 </div>

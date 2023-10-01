@@ -1,15 +1,42 @@
 .example-container {
+    background: url("https://ibb.co/pyqxWCH") 50% fixed;
     width: 100%;
     height: 100%;
     border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
-.example-sidenav-content {
+.sidenav-content {
     display: flex;
     flex-direction: column;
-    justify-content: right;
+    align-items: stretch;
+    /* Asegura que los botones se estiren horizontalmente */
+}
+
+.sidenav-content a.mat-button {
+    flex-grow: 1;
+    /* Hace que los botones ocupen todo el espacio vertical disponible */
+    text-align: left;
+    /* Alinea el texto a la izquierda dentro de los botones */
+    width: 100%;
+    /* Garantiza que los botones ocupen todo el ancho */
+}
+
+
+.rounded-image-container {
+    display: flex;
+    justify-content: center;
     align-items: center;
-    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 20px;
+}
+
+.rounded-image {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
 }
 
 .opensidenav {

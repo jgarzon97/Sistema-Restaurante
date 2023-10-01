@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { debounceTime, distinctUntilChanged, map, startWith, switchMap } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, map, startWith } from 'rxjs/operators';
 import { FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
@@ -62,14 +62,10 @@ export class DetallePedidoComponent implements OnInit {
         cantidad: this.formData.cantidad,
         detalle: this.formData.detalle
       };
-
-      console.log(pedidoProductoData);
-
       this.pedidoService.createPedido_Producto(pedidoProductoData).subscribe(
         (response) => {
           console.log('Respuesta del servidor:', response);
           this.mostrarSnackbar(`Los detalles se ingresaron correctamente.`);
-
         },
         (error) => {
           this.mostrarSnackbar(`Ha ocurrido un error en el ingreso.`);

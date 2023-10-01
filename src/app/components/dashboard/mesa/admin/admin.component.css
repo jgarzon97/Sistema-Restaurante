@@ -79,11 +79,11 @@ a.disponible-link:hover {
     align-items: center;
     justify-content: center;
     text-align: center;
-    font-size: 32px;
-    margin: 0 auto;
+    background-color: #000000;
+
 }
 
 .crear-mesa-button mat-icon {
-    color: #fff;
+    color: #ffffff;
     margin-bottom: 5px;
 }

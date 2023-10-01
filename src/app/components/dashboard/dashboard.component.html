@@ -1,8 +1,11 @@
 <mat-sidenav-container class="example-container">
-    <mat-sidenav #sidenav mode="side" class="example-sidenav">
+    <mat-sidenav #sidenav mode="side" class="sidenav">
         <!-- Contenido del sidenav -->
         <div class="sidenav-content">
-            <a mat-button [routerLink]="'/dashboard/inicio'">
+            <div class="rounded-image-container">
+                <img src="./assets/img/logo-delicias.png" class="rounded-image">
+            </div>
+            <a *ngIf="rol === '1'" mat-button [routerLink]="'/dashboard/inicio'">
                 <mat-icon>home</mat-icon> INICIO
             </a>
             <a *ngIf="rol === '1'" mat-button [routerLink]="'/dashboard/admin/mesa'">
@@ -37,7 +40,7 @@
                 </button>
             </mat-toolbar-row>
         </mat-toolbar>
-        <!-- Aquí coloca el contenido principal de tu página -->
+        <!-- Contenido principal de tu página -->
         <div style="margin-top: 20px;">
             <router-outlet></router-outlet>
         </div>
