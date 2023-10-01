@@ -24,6 +24,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     FormsModule,
     MatTooltipModule,
     MatAutocompleteModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSidenavModule
   ],
   exports:[
     CommonModule,
@@ -72,7 +74,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     FormsModule,
     MatTooltipModule,
     MatAutocompleteModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSidenavModule
   ],
 })
 export class SharedModule { }

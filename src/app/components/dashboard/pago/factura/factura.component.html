@@ -9,13 +9,25 @@
                     <mat-label>Pedido</mat-label>
                     <input matInput [(ngModel)]="formData.id_pedido" id="id_pedido" name="id_pedido" [readonly]="true">
                 </mat-form-field>
-                <mat-form-field>
+            </div>
+            <div class="input-container">
+                <mat-form-field class="client-input mat-form-field-flex">
                     <mat-label>Cliente</mat-label>
-                    <input matInput [(ngModel)]="formData.id_cliente" id="id_cliente" name="id_cliente">
+                    <input type="text" id="id_cliente" name="id_cliente" matInput [formControl]="myControl"
+                        [matAutocomplete]="auto">
+                    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                            {{ option }}
+                        </mat-option>
+                    </mat-autocomplete>
                 </mat-form-field>
-                <div class="button-container">
-                    <button mat-raised-button color="primary" type="submit" class="custom-button">Aceptar</button>
-                </div>
+            </div>
+            <!-- Contenedor de botones -->
+            <div class="button-container">
+                <button mat-icon-button (click)="agregarCliente()" class="add-button">
+                    <mat-icon>add_circle</mat-icon>
+                </button>
+                <button mat-raised-button color="primary" type="submit" class="custom-button">Aceptar</button>
             </div>
         </form>
     </div>

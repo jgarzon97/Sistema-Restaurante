@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 3px solid white; 
+    border: 3px solid white;
     padding: 20px;
 }
 
@@ -15,4 +15,25 @@ mat-form-field {
     max-width: 400px;
     width: 100%;
     margin: auto;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+}
+
+.client-input {
+    flex-grow: 1;
+}
+
+/* Estilos para el contenedor de botones */
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 16px;
+}
+
+.add-button {
+    margin-right: 8px;
 }

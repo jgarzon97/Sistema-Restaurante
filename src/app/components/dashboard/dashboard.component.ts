@@ -19,4 +19,17 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 })
 
 export class DashboardComponent {
+  rol:string='';
+
+  constructor() { }
+
+  ngOnInit(): void {
+    const rolActual = localStorage.getItem('rol');
+
+    if(rolActual!==null){
+      this.rol=rolActual;
+    }else{
+      this.rol='';
+    }
+  }
 }

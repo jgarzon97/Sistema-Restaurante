@@ -63,6 +63,8 @@ export class DetallePedidoComponent implements OnInit {
         detalle: this.formData.detalle
       };
 
+      console.log(pedidoProductoData);
+
       this.pedidoService.createPedido_Producto(pedidoProductoData).subscribe(
         (response) => {
           console.log('Respuesta del servidor:', response);
@@ -84,13 +86,13 @@ export class DetallePedidoComponent implements OnInit {
   }
 
   private mostrarSnackbar(mensaje: string): void {
-    this._snackBar.open(mensaje, undefined, {
+    this._snackBar.open(mensaje, 'Cerrar', {
       duration: 3000,
     });
   }
 
   private mostrarSnackbarError(mensaje: string): void {
-    this._snackBar.open(mensaje, undefined, {
+    this._snackBar.open(mensaje, 'Cerrar', {
       duration: 3000,
       panelClass: ['error-snackbar']
     });

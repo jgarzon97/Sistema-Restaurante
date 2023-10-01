@@ -1,4 +1,45 @@
-<app-navbar></app-navbar>
-<div style="margin-top: 20px;">
-    <router-outlet></router-outlet>
-</div>
+<mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenav mode="side" class="example-sidenav">
+        <!-- Contenido del sidenav -->
+        <div class="sidenav-content">
+            <a mat-button [routerLink]="'/dashboard/inicio'">
+                <mat-icon>home</mat-icon> INICIO
+            </a>
+            <a *ngIf="rol === '1'" mat-button [routerLink]="'/dashboard/admin/mesa'">
+                <mat-icon>table_chart</mat-icon> MESAS
+            </a>
+            <a *ngIf=" rol === '2' " mat-button [routerLink]="'/dashboard/mesa'">
+                <mat-icon>table_chart</mat-icon> MESAS
+            </a>
+            <a *ngIf=" rol === '1' || rol === '2' " mat-button [routerLink]="'/dashboard/pedidos'">
+                <mat-icon>receipt</mat-icon> PEDIDOS
+            </a>
+            <a *ngIf=" rol === '1' " mat-button [routerLink]="'/dashboard/admin/menu'">
+                <mat-icon>restaurant_menu</mat-icon> MENU
+            </a>
+            <a *ngIf=" rol === '1' || rol === '2' " mat-button [routerLink]="'/dashboard/pago'">
+                <mat-icon>attach_money</mat-icon> FACTURAS
+            </a>
+            <a *ngIf=" rol === '1' " mat-button [routerLink]="'/dashboard/roles'">
+                <mat-icon>supervisor_account</mat-icon> ROLES
+            </a>
+            <button mat-button  class="example-icon favorite-icon" routerLink="/">
+                <mat-icon>logout</mat-icon>
+            </button>
+        </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <!-- Contenido principal -->
+        <mat-toolbar color="primary">
+            <mat-toolbar-row color="primary">
+                <button mat-icon-button (click)="sidenav.toggle()">
+                    <mat-icon>menu</mat-icon>
+                </button>
+            </mat-toolbar-row>
+        </mat-toolbar>
+        <!-- Aquí coloca el contenido principal de tu página -->
+        <div style="margin-top: 20px;">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

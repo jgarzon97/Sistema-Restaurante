@@ -5,7 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { MesasService } from 'src/app/services/mesas.service';
 import { PedidosService } from 'src/app/services/pedidos.service';
-import { MesaNuevaComponent } from '../mesa.nueva/mesa.nueva.component';
+import { MesaData, MesaNuevaComponent } from '../mesa.nueva/mesa.nueva.component';
 
 @Component({
   selector: 'app-admin',
@@ -31,7 +31,7 @@ export class AdminComponent {
     private pedidoService: PedidosService,
     private router: Router,
     private _snackBar: MatSnackBar,
-    public dialog: MatDialog
+    public dialog: MatDialog,
   ) { }
 
   mesas: any[] = [];
@@ -51,13 +51,16 @@ export class AdminComponent {
     this.mesaService.obtenerNuevaMesaSubject().subscribe(nuevaMesa => {
       this.mesas.push(nuevaMesa);
     });
+    this.mesaService.mesaActualizada$.subscribe((datosActualizados: any) => {
+      console.log('Mesa actualizada:', datosActualizados);
+    });
   }
 
   // Función para crear un pedido apartir de la selección de una mesa
   crearPedido(userId: number | null, mesa: any): void {
     if (userId !== null) {
       this.pedidoService.createPedido(userId, mesa.id_mesa).subscribe(response => {
-        this.mostrarSnackbar(`Pedido creado con éxito`);
+        this.mostrarSnackbarRuta(`Pedido creado con éxito`);
       });
     } else {
       console.error('El userId no está definido');
@@ -78,13 +81,23 @@ export class AdminComponent {
     }
   }
 
-  // Función para generar mensajes personalizados
-  private mostrarSnackbar(mensaje: string): void {
+  // Función para generar mensajes y me lleve a una ruta
+  private mostrarSnackbarRuta(mensaje: string): void {
     const snackBarRef = this._snackBar.open(mensaje, 'Cerrar', {
       duration: 2000,
     });
     snackBarRef.afterDismissed().subscribe(() => {
       this.router.navigate(['dashboard/pedidos']);
+    });
+  }
+
+  // Función para generar mensajes y me lleve a una ruta
+  private mostrarSnackbar(mensaje: string): void {
+    const snackBarRef = this._snackBar.open(mensaje, 'Cerrar', {
+      duration: 2000,
+    });
+    snackBarRef.afterDismissed().subscribe(() => {
+      window.location.reload();
     });
   }
 
@@ -98,6 +111,7 @@ export class AdminComponent {
         this.mesaService.createMesa(result).subscribe(response => {
           if (response) {
             console.log('Mesa creada con éxito:', response);
+            this.mostrarSnackbar(`Se actualizará para ver los cambios`);
           } else {
             console.error('Error al crear la mesa.');
           }
@@ -108,15 +122,30 @@ export class AdminComponent {
     });
   }
 
+  actualizarMesa(mesaActualizada: any): void {
+    this.mesaService.updateMesa(mesaActualizada.id_mesa, mesaActualizada).subscribe(
+      (response) => {
+        console.log('Mesa actualizada con éxito', response);
+      },
+      (error) => {
+        console.error('Error al actualizar la mesa', error);
+      }
+    );
+  }
+
   abrirDialogoEdicion(mesa: any): void {
+    console.log('Editando', mesa);
     const dialogRef = this.dialog.open(MesaNuevaComponent, {
-      data: { ...mesa }
+      data: { ...mesa },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        console.log('Mesa editada:', result);
-      } else {
+    dialogRef.componentInstance.mesaActualizada.subscribe((datosActualizados: MesaData) => {
+      console.log("datos:", datosActualizados);
+      // Puedes realizar otras acciones con los datos actualizados si es necesario
+    });
+
+    dialogRef.afterClosed().subscribe((result: MesaData) => {
+      if (!result) {
         console.log('El diálogo de edición se cerró sin guardar cambios');
       }
     });

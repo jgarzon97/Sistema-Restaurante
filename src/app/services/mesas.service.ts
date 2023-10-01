@@ -9,6 +9,8 @@ export class MesasService {
 
   private apiUrl = 'http://localhost:3000'; // La URL base del servidor Express
   private nuevaMesaSubject = new Subject<any>(); // Subject para las nuevas mesas
+  private mesaActualizadaSource = new Subject<any>();
+  mesaActualizada$ = this.mesaActualizadaSource.asObservable();
 
   constructor(private http: HttpClient) { }
 
@@ -36,6 +38,10 @@ export class MesasService {
 
   updateMesa(id: number, mesaData: any): Observable<any> {
     return this.http.put<any>(`${this.apiUrl}/mesa/${id}`, mesaData);
+  }
+
+  emitirMesaActualizada(data: any) {
+    this.mesaActualizadaSource.next(data);
   }
 
   deleteMesa(id: number): Observable<any> {
