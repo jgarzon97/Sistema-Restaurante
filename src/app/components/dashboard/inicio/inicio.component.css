@@ -1,62 +1,69 @@
-table {
-    width: 100%;
+.mat-toolbar {
+    background-color: #673ab7;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-th {
+.container-card {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    justify-content: center;
+    justify-items: center;
+    height: 100%;
     text-align: center;
-    font-weight: bold;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
-.mat-column-num_mesa {
-    text-align: center;
-}
-
-.mat-column-capacidad {
-    text-align: center;
-
-}
-
-.mat-column-estado {
-    text-align: center;
-}
-
-.mat-column-acciones {
-    text-align: center;
-}
-
-.custom-content {
+.mesa-card {
     border: 1px solid #ccc;
-    padding: 5px;
-    display: inline-block;
     border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    height: 100px;
+    width: 200px;
+    background-color: #fff;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
 }
 
-.green-button {
-    background-color: rgb(35, 202, 35);
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
+.mesa-card:hover {
     cursor: pointer;
 }
 
-.red-button {
-    background-color: rgb(217, 45, 45);
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
+.mesa-numero {
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #fff;
 }
 
-.gray-button {
-    background-color: gray;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
+.mesa-estado {
+    font-size: 18px;
+    color: #fff;
+    margin-bottom: 5px;
 }
 
-button a {
+.mesa-capacidad {
+    font-size: 18px;
+    color: #fff;
+    padding-bottom: 20px;
+}
+
+a.disponible-link {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 3px;
     text-decoration: none;
-    color: inherit;
+}
+
+a.disponible-link:hover {
+    background-color: #357a38;
+    color: #fff;
 }

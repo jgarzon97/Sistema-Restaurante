@@ -3,7 +3,7 @@ import { Component, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTable } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { LoginServiceService } from 'src/app/services/login.service.service';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-nuevo-usuario',

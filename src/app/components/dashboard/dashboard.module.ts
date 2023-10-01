@@ -10,7 +10,6 @@ import { PedidosComponent } from './pedidos/pedidos.component';
 import { MenuComponent } from './menu/menu.component';
 import { PagoComponent } from './pago/pago.component';
 import { NuevoMenuComponent } from './menu/nuevo-menu/nuevo-menu.component';
-import { NuevoPedidoComponent } from './pedidos/nuevo-pedido/nuevo-pedido.component';
 import { DetallePedidoComponent } from './pedidos/detalle-pedido/detalle-pedido.component';
 import { ClienteComponent } from './pago/cliente/cliente.component';
 import { FacturaComponent } from './pago/factura/factura.component';
@@ -28,7 +27,6 @@ import { NuevoUsuarioComponent } from './roles/nuevo-usuario/nuevo-usuario.compo
     MenuComponent,
     PagoComponent,
     NuevoMenuComponent,
-    NuevoPedidoComponent,
     DetallePedidoComponent,
     ClienteComponent,
     FacturaComponent,

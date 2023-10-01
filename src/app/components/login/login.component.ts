@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LoginServiceService } from 'src/app/services/login.service.service';
+import { LoginService } from 'src/app/services/login.service';
 import axios from 'axios';
 
 @Component({
@@ -15,7 +15,7 @@ export class LoginComponent {
   form: FormGroup;
   loading = false;
 
-  constructor(private loginService: LoginServiceService, private route: ActivatedRoute, private fb: FormBuilder, private _snackBar: MatSnackBar, private router: Router) {
+  constructor(private loginService: LoginService, private route: ActivatedRoute, private fb: FormBuilder, private _snackBar: MatSnackBar, private router: Router) {
     this.form = this.fb.group({
       usuario: ['', Validators.required],
       password: ['', Validators.required]

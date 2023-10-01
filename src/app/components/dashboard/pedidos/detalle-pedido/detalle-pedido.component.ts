@@ -4,7 +4,7 @@ import { FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { PedidosServiceService } from 'src/app/services/pedidos.service.service';
+import { PedidosService } from 'src/app/services/pedidos.service';
 import { ProductosService } from 'src/app/services/productos.service';
 
 @Component({
@@ -31,7 +31,7 @@ export class DetallePedidoComponent implements OnInit {
   };
 
   constructor(
-    private pedidoservidorService: PedidosServiceService,
+    private pedidoService: PedidosService,
     private productosService: ProductosService,
     private activatedRoute: ActivatedRoute,
     private _snackBar: MatSnackBar
@@ -63,7 +63,7 @@ export class DetallePedidoComponent implements OnInit {
         detalle: this.formData.detalle
       };
 
-      this.pedidoservidorService.createPedido_Producto(pedidoProductoData).subscribe(
+      this.pedidoService.createPedido_Producto(pedidoProductoData).subscribe(
         (response) => {
           console.log('Respuesta del servidor:', response);
           this.mostrarSnackbar(`Los detalles se ingresaron correctamente.`);

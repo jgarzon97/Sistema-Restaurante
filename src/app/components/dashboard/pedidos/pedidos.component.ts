@@ -3,7 +3,7 @@ import { Component, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTable } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { PedidosServiceService } from 'src/app/services/pedidos.service.service';
+import { PedidosService } from 'src/app/services/pedidos.service';
 
 @Component({
   selector: 'app-pedidos',
@@ -30,7 +30,10 @@ export class PedidosComponent {
 
   formData: { id_pedido?: string } = {};
 
-  constructor(private servidor: PedidosServiceService, private _snackBar: MatSnackBar, private router: Router) { }
+  constructor(
+    private servidor: PedidosService,
+    private _snackBar: MatSnackBar,
+    private router: Router) { }
 
   ngOnInit(): void {
     const userId = localStorage.getItem('id');

@@ -1,6 +1,9 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { MesasService } from 'src/app/services/mesas.service';
+import { PedidosService } from 'src/app/services/pedidos.service';
 import { ServidorService } from 'src/app/services/servidor.service';
 
 @Component({
@@ -20,22 +23,65 @@ import { ServidorService } from 'src/app/services/servidor.service';
   ],
 })
 
-
 export class InicioComponent {
 
-  displayedColumns: string[] = ['num_mesa', 'capacidad', 'estado', 'acciones'];
-  dataSource: any[] = [];
+  constructor(
+    private mesaService: MesasService,
+    private pedidoService: PedidosService,
+    private router: Router,
+    private _snackBar: MatSnackBar,
+  ) { }
 
-  constructor(private snackBar: MatSnackBar, private servidor: ServidorService) {}
+  mesas: any[] = [];
+  dataSource: any[] = [];
+  userId: number | null = null;
 
   ngOnInit(): void {
-    this.servidor.getMesas().subscribe(data => {
-      console.log(data); // Verifica si estás recibiendo datos y su estructura
-      this.dataSource = data;
+    const userIdString = localStorage.getItem('id');
+    if (userIdString) {
+      this.userId = Number(userIdString); // Convierte el userId a número si existe
+    } else {
+      console.error('No se encontró el userId en el localStorage');
+    }
+    this.mesaService.getMesas().subscribe(data => {
+      this.mesas = data;
+    });
+    this.mesaService.obtenerNuevaMesaSubject().subscribe(nuevaMesa => {
+      this.mesas.push(nuevaMesa);
     });
   }
 
-  borrarPedido(id: number): void {
-
+  // Función para crear un pedido apartir de la selección de una mesa
+  crearPedido(userId: number | null, mesa: any): void {
+    if (userId !== null) {
+      this.pedidoService.createPedido(userId, mesa.id_mesa).subscribe(response => {
+        this.mostrarSnackbar(`Pedido creado con éxito`);
+      });
+    } else {
+      console.error('El userId no está definido');
+    }
   }
+
+  // Función para crear una nueva mesa
+  crearMesa() {
+    const nuevaMesaData = {
+    };
+    this.mesaService.createMesa(nuevaMesaData).subscribe(response => {
+      this.mostrarSnackbar(`Nueva mesa en el sistema`);
+    });
+  }
+
+  getBackgroundColorByEstado(estado: string): string {
+    return estado === 'Ocupada' ? 'red' : 'green';
+  }
+
+  private mostrarSnackbar(mensaje: string): void {
+    const snackBarRef = this._snackBar.open(mensaje, 'Cerrar', {
+      duration: 2000,
+    });
+    snackBarRef.afterDismissed().subscribe(() => {
+      this.router.navigate(['dashboard/pedidos']);
+    });
+  }
+  
 }

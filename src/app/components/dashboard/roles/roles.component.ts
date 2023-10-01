@@ -1,6 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component } from '@angular/core';
-import { LoginServiceService } from 'src/app/services/login.service.service';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-roles',
@@ -23,7 +23,7 @@ export class RolesComponent {
   displayedColumns: string[] = ['id_usuario', 'user_usuario', 'nombre_user', 'apellido_user', 'tipo_rol', 'estado'];
   dataSource!: any[];
 
-  constructor(private usuarios: LoginServiceService) { }
+  constructor(private usuarios: LoginService) { }
 
   ngOnInit(): void {
     this.usuarios.getUsuarios().subscribe(data => {

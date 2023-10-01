@@ -5,8 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class PedidosServiceService {
-
+export class PedidosService {
   private apiUrl = 'http://localhost:3000'; // La URL base del servidor Express
 
   constructor(private http: HttpClient) { }
@@ -25,9 +24,12 @@ export class PedidosServiceService {
     return this.http.get<any>(`${this.apiUrl}/usuario-pedido/${id}`);
   }
 
-  createPedido(pedidoData: any): Observable<any> {
+  createPedido(userId: number, idMesa: number): Observable<any> {
+    const pedidoData = { id_usuario: userId, id_mesa: idMesa };
     return this.http.post<any>(`${this.apiUrl}/pedido`, pedidoData);
   }
+  
+  
 
   updatePedido(id: number, pedidoData: any): Observable<any> {
     return this.http.put<any>(`${this.apiUrl}/pedido/${id}`, pedidoData);
