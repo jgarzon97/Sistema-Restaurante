@@ -5,10 +5,16 @@
         <button mat-button [routerLink]="'/dashboard/inicio'">
             INICIO
         </button>
+        <button mat-button *ngIf=" rol === '1' " [routerLink]="'/dashboard/admin/mesa'">
+            MESAS
+        </button>
+        <button mat-button *ngIf=" rol === '2' " [routerLink]="'/dashboard/mesa'">
+            MESAS
+        </button>
         <button mat-button *ngIf=" rol === '1' || rol === '2' " [routerLink]="'/dashboard/pedidos'">
             PEDIDOS
         </button>
-        <button mat-button *ngIf=" rol === '1' " [routerLink]="'/dashboard/menu'">
+        <button mat-button *ngIf=" rol === '1' " [routerLink]="'/dashboard/admin/menu'">
             MENU
         </button>
         <button mat-button *ngIf=" rol === '1' || rol === '2' " [routerLink]="'/dashboard/pago'">

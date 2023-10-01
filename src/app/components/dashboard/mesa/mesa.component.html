@@ -1,0 +1,21 @@
+<div class="container mat-elevation-z5" [@fadeInOut]>
+    <mat-toolbar class="mat-toolbar">
+        <span>MESAS DISPONIBLES</span>
+    </mat-toolbar>
+adadsdas
+    <div class="container-card">
+        <div *ngFor="let mesa of mesas" [ngStyle]="{ 'background-color': getBackgroundColorByEstado(mesa.estado) }"
+            class="mesa-card">
+            <div class="mesa-numero">
+                Mesa {{ mesa.num_mesa }}
+            </div>
+            <div class="mesa-estado">
+                Estado: {{ mesa.estado }}
+            </div>
+            <div class="mesa-capacidad">
+                Capacidad: {{ mesa.capacidad }}
+            </div>
+            <a *ngIf="mesa.estado === 'Disponible'" class="disponible-link" (click)="crearPedido(userId, mesa)">Reservar</a>
+        </div>
+    </div>
+</div>

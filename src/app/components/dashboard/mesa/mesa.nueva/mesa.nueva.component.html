@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>Ingrese una nueva mesa</h1>
+<div mat-dialog-content>
+    <mat-form-field>
+        <mat-label>No. Mesa</mat-label>
+        <input matInput [(ngModel)]="data.num_mesa">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Capacidad</mat-label>
+        <input matInput [(ngModel)]="data.capacidad">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Estado</mat-label>
+        <mat-select [(ngModel)]="data.estado">
+          <mat-option *ngFor="let estado of estados" [value]="estado">{{ estado }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cerrar</button>
+    <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Guardar</button>
+</div>

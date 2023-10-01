@@ -1,0 +1,33 @@
+<div class="container mat-elevation-z5" [@fadeInOut]>
+    <mat-toolbar class="mat-toolbar">
+        <span>MESAS DISPONIBLES</span>
+    </mat-toolbar>
+
+    <div class="container-card">
+        <div *ngFor="let mesa of mesas" [ngStyle]="{ 'background-color': getBackgroundColorByEstado(mesa.estado) }"
+            class="mesa-card">
+            <div class="mesa-numero">
+                Mesa {{ mesa.num_mesa }}
+            </div>
+            <div class="mesa-estado">
+                Estado: {{ mesa.estado }}
+            </div>
+            <div class="mesa-capacidad">
+                Capacidad: {{ mesa.capacidad }}
+            </div>
+            <button mat-icon-button *ngIf="mesa.estado === 'Disponible'" class="disponible-link button"
+                (click)="crearPedido(userId, mesa)">
+                <mat-icon>add_circle</mat-icon>
+            </button>
+            <button mat-icon-button (click)="abrirDialogoEdicion(mesa)" class="button">
+                <mat-icon>edit</mat-icon>
+            </button>
+        </div>
+        <button mat-icon-button class="crear-mesa-button" (click)="openDialog()">
+            <div class="icon-container">
+                <mat-icon>add</mat-icon>
+            </div>
+        </button>
+    </div>
+
+</div>

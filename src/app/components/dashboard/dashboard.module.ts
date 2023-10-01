@@ -13,9 +13,11 @@ import { NuevoMenuComponent } from './menu/nuevo-menu/nuevo-menu.component';
 import { DetallePedidoComponent } from './pedidos/detalle-pedido/detalle-pedido.component';
 import { ClienteComponent } from './pago/cliente/cliente.component';
 import { FacturaComponent } from './pago/factura/factura.component';
-import { MesasComponent } from './inicio/mesas/mesas.component';
 import { RolesComponent } from './roles/roles.component';
 import { NuevoUsuarioComponent } from './roles/nuevo-usuario/nuevo-usuario.component';
+import { MesaComponent } from './mesa/mesa.component';
+import { AdminComponent } from './mesa/admin/admin.component';
+import { MesaNuevaComponent } from './mesa/mesa.nueva/mesa.nueva.component';
 
 
 @NgModule({
@@ -30,9 +32,11 @@ import { NuevoUsuarioComponent } from './roles/nuevo-usuario/nuevo-usuario.compo
     DetallePedidoComponent,
     ClienteComponent,
     FacturaComponent,
-    MesasComponent,
     RolesComponent,
-    NuevoUsuarioComponent
+    NuevoUsuarioComponent,
+    MesaComponent,
+    AdminComponent,
+    MesaNuevaComponent
   ],
   imports: [
     CommonModule,
