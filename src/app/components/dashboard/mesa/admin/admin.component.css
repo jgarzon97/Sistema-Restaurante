@@ -87,3 +87,10 @@ a.disponible-link:hover {
     color: #ffffff;
     margin-bottom: 5px;
 }
+
+.example-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+}

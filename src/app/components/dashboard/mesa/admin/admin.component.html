@@ -15,19 +15,19 @@
             <div class="mesa-capacidad">
                 Capacidad: {{ mesa.capacidad }}
             </div>
-            <button mat-icon-button matTooltip="Reservar" *ngIf="mesa.estado === 'Disponible'" class="disponible-link button"
-                (click)="crearPedido(userId, mesa)">
+            <button mat-icon-button matTooltip="Reservar" *ngIf="mesa.estado === 'Disponible'"
+                class="disponible-link button" (click)="crearPedido(userId, mesa)">
                 <mat-icon>add_circle</mat-icon>
             </button>
             <button mat-icon-button matTooltip="Editar" (click)="abrirDialogoEdicion(mesa)" class="button">
                 <mat-icon>edit</mat-icon>
             </button>
         </div>
-        <button mat-icon-button class="crear-mesa-button" (click)="openDialog()">
-            <div class="icon-container">
+        <div class="example-button-container">
+            <button mat-fab color="warn"  (click)="openDialog()">
                 <mat-icon>add</mat-icon>
-            </div>
-        </button>
+            </button>
+        </div>
     </div>
 
 </div>
