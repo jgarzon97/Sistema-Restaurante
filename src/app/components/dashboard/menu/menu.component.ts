@@ -22,6 +22,7 @@ import { ServidorService } from 'src/app/services/servidor.service';
     ]),
   ],
 })
+
 export class MenuComponent {
 
   displayedColumns: string[] = ['id_producto', 'nombre', 'precio', 'estado', 'nombre_categoria', 'acciones'];
@@ -53,7 +54,6 @@ export class MenuComponent {
     });
   }
 
-  
   private mostrarSnackbar(mensaje: string): void {
     this.snackBar.open(mensaje, undefined, {
       duration: 1000,

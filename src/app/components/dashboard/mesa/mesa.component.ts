@@ -22,7 +22,6 @@ import { PedidosService } from 'src/app/services/pedidos.service';
   ],
 })
 
-
 export class MesaComponent {
 
   constructor(

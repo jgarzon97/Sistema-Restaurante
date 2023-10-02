@@ -18,6 +18,7 @@ import { LoginService } from 'src/app/services/login.service';
     ]),
   ],
 })
+
 export class RolesComponent {
 
   displayedColumns: string[] = ['id_usuario', 'user_usuario', 'nombre_user', 'apellido_user', 'tipo_rol', 'estado'];

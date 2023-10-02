@@ -30,7 +30,7 @@ export class NuevoUsuarioComponent {
 
   myControl = new FormControl<string | estados>('');
   options: estados[] = [{estado: 'Activo'}, {estado: 'Inactivo'}];
-  filteredOptions!: Observable<estados[]>;
+  filteredOptions!: Observable<string[]>;
 
   formData = {
     user_usuario: '',
@@ -48,11 +48,8 @@ export class NuevoUsuarioComponent {
 
   ngOnInit() {
     this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(''),
-      map(value => {
-        const estado = typeof value === 'string' ? value : value?.estado;
-        return estado ? this._filter(estado as string) : this.options.slice();
-      }),
+      startWith('Activo', 'Inactivo'),
+      map(value => this._filter(value as string))
     );
   }
 
@@ -86,10 +83,11 @@ export class NuevoUsuarioComponent {
     return estado ? estado.estado : '';
   }
 
-  private _filter(estado: string): estados[] {
-    const filterValue = estado.toLowerCase();
-
-    return this.options.filter(option => option.estado.toLowerCase().includes(filterValue));
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    return this.options
+      .map(option => option.estado) // Mapea solo los valores de estado
+      .filter(option => option.toLowerCase().includes(filterValue));
   }
 
   private mostrarSnackbar(mensaje: string): void {

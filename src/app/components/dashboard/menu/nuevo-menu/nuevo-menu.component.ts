@@ -9,22 +9,10 @@ import { ServidorService } from 'src/app/services/servidor.service';
 })
 export class NuevoMenuComponent {
 
-  // Variable para almacenar las categorías
-  categories: any[] = [];
-  selectedCategoria: any;
-
   constructor(private servidorService: ServidorService, private router: Router) {}
 
   ngOnInit(): void {
-    this.servidorService.getCategorias().subscribe(
-      (data: any[]) => {
-        console.log(data);
-        this.categories = data;
-      },
-      (error) => {
-        console.error('Error al obtener mesas:', error);
-      }
-    );
+
   }
 
 }
