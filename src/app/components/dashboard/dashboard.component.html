@@ -5,9 +5,6 @@
             <div class="rounded-image-container">
                 <img src="./assets/img/logo-delicias.png" class="rounded-image">
             </div>
-            <a *ngIf="rol === '1'" mat-button [routerLink]="'/dashboard/inicio'">
-                <mat-icon>home</mat-icon> INICIO
-            </a>
             <a *ngIf="rol === '1'" mat-button [routerLink]="'/dashboard/admin/mesa'">
                 <mat-icon>table_chart</mat-icon> MESAS
             </a>
@@ -27,7 +24,7 @@
                 <mat-icon>supervisor_account</mat-icon> ROLES
             </a>
             <button mat-button  class="example-icon favorite-icon" routerLink="/">
-                <mat-icon>logout</mat-icon>
+                <mat-icon>logout</mat-icon> SALIR
             </button>
         </div>
     </mat-sidenav>

@@ -33,7 +33,7 @@ export class MesaNuevaComponent {
   }
 
   onNoClick(): void {
-    this.dialogRef.close();
+    this.dialogRef.close(this.data);
   }
 
   guardarMesa(): void {

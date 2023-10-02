@@ -1,0 +1,15 @@
+<div class="verfactura">
+    <h2 mat-dialog-title>Detalles de Factura <strong>No.{{ factura[0].id_factura }}</strong></h2>
+    <br>
+    <ul>
+        <li><strong>Fecha:</strong> {{ factura[0].fecha | date: 'dd/MM/yyyy HH:mm:ss' }}</li>
+        <li><strong>Estado de Pago:</strong> {{ factura[0].estado_de_pago }}</li>
+        <li><strong>Pedido:</strong> {{ factura[0].id_pedido }}</li>
+        <li><strong>Cliente:</strong> {{ factura[0].nombre }} {{ factura[0].apellido }}</li>
+        <p><strong> Total: </strong></p>
+        <li>{{ factura[0].total | currency }}</li>
+    </ul>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Cancel</button>
+    </mat-dialog-actions>
+</div>

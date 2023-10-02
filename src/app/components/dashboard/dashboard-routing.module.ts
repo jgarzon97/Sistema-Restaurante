@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
-import { InicioComponent } from './inicio/inicio.component';
 import { MesaComponent } from './mesa/mesa.component';
 import { AdminComponent } from './mesa/admin/admin.component';
 import { PedidosComponent } from './pedidos/pedidos.component';
@@ -17,7 +16,6 @@ import { NuevoUsuarioComponent } from './roles/nuevo-usuario/nuevo-usuario.compo
 const routes: Routes = [
   {
     path: '', component: DashboardComponent, children: [
-      { path: 'inicio', component: InicioComponent },
       { path: 'mesa', component: MesaComponent },
       { path: 'admin/mesa', component: AdminComponent },
       { path: 'pedidos', component: PedidosComponent },

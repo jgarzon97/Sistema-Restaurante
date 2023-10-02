@@ -44,26 +44,21 @@ export class ClienteComponent {
   }
 
   onSubmit() {
-    if (this.activo == false) {
-
-    } else {
-
-      if (this.cliente.invalid) {
-        console.log("Formulario inválido, verifica los campos.");
-        return;
-      }
-
-      const data = this.cliente.value;
-      this.pagoService.createCliente(data).subscribe(
-        response => {
-          console.log("Cliente registrado:", response);
-          this.router.navigate(['/dashboard/pago']);
-        },
-        error => {
-          console.error("Error al registrar cliente:", error);
-        }
-      );
+    if (this.cliente.invalid) {
+      console.log("Formulario inválido, verifica los campos.");
+      return;
     }
+
+    const data = this.cliente.value;
+    this.pagoService.createCliente(data).subscribe(
+      response => {
+        console.log("Cliente registrado:", response);
+        window.history.back();
+      },
+      error => {
+        console.error("Error al registrar cliente:", error);
+      }
+    );
   }
 
   getErrorMessage(fieldName: string): string {

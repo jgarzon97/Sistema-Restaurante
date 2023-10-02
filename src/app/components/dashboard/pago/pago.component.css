@@ -40,6 +40,10 @@ th {
     text-align: center;
 }
 
+.mat-column-acciones {
+    text-align: center;
+}
+
 .green-button {
     background-color: rgb(35, 202, 35);
     color: white;

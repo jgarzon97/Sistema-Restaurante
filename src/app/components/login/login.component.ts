@@ -76,10 +76,14 @@ export class LoginComponent {
   }
 
   fakeloading() {
-    // Creara una pantalla de carga
     this.loading = true;
     setTimeout(() => {
-      this.router.navigate(['/dashboard/inicio']);
+      const rol = localStorage.getItem('rol');
+      if (rol === '1') {
+        this.router.navigate(['/dashboard/admin/mesa']);
+      } else {
+        this.router.navigate(['/dashboard/mesa']);
+      }
     }, 1500);
   }
 }

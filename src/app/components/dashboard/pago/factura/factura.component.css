@@ -30,3 +30,36 @@ mat-form-field {
 td {
     padding-right: 8px;
 }
+
+/* Estilo para el botón de agregar cliente */
+.add-button {
+    background-color: #3f51b5;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.add-button:hover {
+    background-color: #283593;
+    /* Cambia el color de fondo al pasar el ratón por encima */
+}
+
+/* Estilo para el botón de aceptar */
+.custom-button {
+    background-color: #4caf50;
+    /* Cambia el color de fondo */
+    color: white;
+    /* Cambia el color del texto */
+    border: none;
+    /* Elimina el borde */
+    padding: 10px 20px;
+    /* Añade espacio alrededor del texto */
+    border-radius: 5px;
+    /* Añade bordes redondeados */
+}
+
+.custom-button:hover {
+    background-color: #388e3c;
+    /* Cambia el color de fondo al pasar el ratón por encima */
+}

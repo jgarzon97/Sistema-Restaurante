@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { DashboardComponent } from './dashboard.component';
-import { InicioComponent } from './inicio/inicio.component';
 import { PedidosComponent } from './pedidos/pedidos.component';
 import { MenuComponent } from './menu/menu.component';
 import { PagoComponent } from './pago/pago.component';
@@ -17,12 +16,12 @@ import { NuevoUsuarioComponent } from './roles/nuevo-usuario/nuevo-usuario.compo
 import { MesaComponent } from './mesa/mesa.component';
 import { AdminComponent } from './mesa/admin/admin.component';
 import { MesaNuevaComponent } from './mesa/mesa.nueva/mesa.nueva.component';
+import { VerFacturaComponent } from './pago/ver-factura/ver-factura.component';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    InicioComponent,
     PedidosComponent,
     MenuComponent,
     PagoComponent,
@@ -34,7 +33,8 @@ import { MesaNuevaComponent } from './mesa/mesa.nueva/mesa.nueva.component';
     NuevoUsuarioComponent,
     MesaComponent,
     AdminComponent,
-    MesaNuevaComponent
+    MesaNuevaComponent,
+    VerFacturaComponent
   ],
   imports: [
     CommonModule,
