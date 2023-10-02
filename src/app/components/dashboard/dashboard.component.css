@@ -1,26 +1,34 @@
 .example-container {
-    background: url("https://ibb.co/pyqxWCH") 50% fixed;
     width: 100%;
     height: 100%;
     border: 1px solid rgba(0, 0, 0, 0.5);
+    background: url("https://static.vecteezy.com/system/resources/previews/013/488/415/non_2x/tasty-fast-food-hand-drawn-for-cute-background-illustration-design-wallpaper-in-pattern-hand-drawn-style-vector.jpg") 50% fixed;
+}
+
+.wrapper {
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 100%;
+    background: rgba(140, 75, 225, 0.650);
+}
+
+.sidenav {
+    display: flex;
+    flex-direction: column;
 }
 
 .sidenav-content {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    /* Asegura que los botones se estiren horizontalmente */
 }
 
 .sidenav-content a.mat-button {
     flex-grow: 1;
-    /* Hace que los botones ocupen todo el espacio vertical disponible */
     text-align: left;
-    /* Alinea el texto a la izquierda dentro de los botones */
     width: 100%;
-    /* Garantiza que los botones ocupen todo el ancho */
 }
-
 
 .rounded-image-container {
     display: flex;
@@ -41,17 +49,7 @@
 
 .opensidenav {
     width: 300px;
-    margin: 10px;
     border: 1px solid #555;
-}
-
-.example-sidenav {
-    padding: 20px;
-}
-
-.example-sidenav {
-    display: flex;
-    flex-direction: column;
 }
 
 .sidenav-content {

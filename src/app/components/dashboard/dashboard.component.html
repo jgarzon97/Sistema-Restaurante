@@ -1,5 +1,5 @@
 <mat-sidenav-container class="example-container">
-    <mat-sidenav #sidenav mode="side" class="sidenav">
+    <mat-sidenav #drawer mode="side" class="sidenav">
         <!-- Contenido del sidenav -->
         <div class="sidenav-content">
             <div class="rounded-image-container">
@@ -31,17 +31,17 @@
             </button>
         </div>
     </mat-sidenav>
-    <mat-sidenav-content>
+    <mat-sidenav-content class="wrapper">
         <!-- Contenido principal -->
         <mat-toolbar color="primary">
             <mat-toolbar-row color="primary">
-                <button mat-icon-button (click)="sidenav.toggle()">
+                <button mat-icon-button (click)="drawer.toggle()">
                     <mat-icon>menu</mat-icon>
                 </button>
             </mat-toolbar-row>
         </mat-toolbar>
         <!-- Contenido principal de tu página -->
-        <div style="margin-top: 20px;">
+        <div>
             <router-outlet></router-outlet>
         </div>
     </mat-sidenav-content>
